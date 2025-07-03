@@ -129,7 +129,7 @@ body {
 }
 
 .checklist-content.expanded {
-    max-height: 500px;
+    max-height: 2000px;
     opacity: 1;
 }
 
@@ -214,6 +214,32 @@ body {
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
+}
+
+/* Screenshot styling */
+.screenshot-image {
+    transition: all 0.3s ease;
+}
+
+.screenshot-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(192, 132, 252, 0.2);
+}
+
+/* Modal styling */
+#screenshot-modal {
+    backdrop-filter: blur(10px);
+}
+
+#screenshot-modal .bg-vibe-card {
+    background: linear-gradient(145deg, rgba(26, 26, 46, 0.95), rgba(75, 0, 130, 0.1));
+    backdrop-filter: blur(20px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+#modal-image {
+    max-height: 70vh;
+    object-fit: contain;
 }
 
 /* Custom scrollbar */

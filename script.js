@@ -7,7 +7,30 @@ const checklistData = [
         title: "Create GitHub Account",
         description: "Set up your GitHub account to store and manage your code repositories. GitHub is essential for version control and collaboration in software development.",
         affiliateLink: "https://github.com",
-        linkText: "Sign up for GitHub →"
+        linkText: "Sign up for GitHub →",
+        hasScreenshots: true,
+        screenshots: [
+            {
+                title: "Step 1: Click Sign up",
+                description: "Go to GitHub.com and click the 'Sign up' button in the top right corner",
+                image: "attached_assets/github-1-signup_1751565143888.png"
+            },
+            {
+                title: "Step 2: Fill out the form",
+                description: "Enter your email, create a strong password, choose a username, and select your country",
+                image: "attached_assets/github-2-signup_1751565143888.png"
+            },
+            {
+                title: "Step 3: Complete the form",
+                description: "Make sure all fields are filled correctly with valid information, then click 'Continue'",
+                image: "attached_assets/github-3-signup_1751565143889.png"
+            },
+            {
+                title: "Step 4: Welcome to GitHub!",
+                description: "Once logged in, you'll see your dashboard where you can create repositories and start coding",
+                image: "attached_assets/github-4-loggedin_1751565143889.png"
+            }
+        ]
     },
     {
         id: 2,
@@ -175,11 +198,35 @@ function renderChecklist() {
             <div id="content-${item.id}" class="checklist-content px-6 pb-6">
                 <div class="mt-4 pt-4 border-t border-white/10">
                     <p class="text-gray-300 mb-4 leading-relaxed">${item.description}</p>
+                    
+                    ${item.hasScreenshots ? `
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-vibe-purple mb-4">Step-by-Step Guide:</h4>
+                            <div class="space-y-4">
+                                ${item.screenshots.map(screenshot => `
+                                    <div class="bg-gradient-to-r from-vibe-card/20 to-purple-900/20 rounded-lg p-4 border border-white/5">
+                                        <div class="flex flex-col md:flex-row gap-4">
+                                            <div class="md:w-2/3">
+                                                <img src="${screenshot.image}" alt="${screenshot.title}" 
+                                                     class="w-full rounded-lg border border-white/10 hover:border-vibe-purple/30 transition-all duration-300 cursor-pointer screenshot-image"
+                                                     onclick="openScreenshotModal('${screenshot.image}', '${screenshot.title}')">
+                                            </div>
+                                            <div class="md:w-1/3 flex flex-col justify-center">
+                                                <h5 class="font-semibold text-vibe-text mb-2">${screenshot.title}</h5>
+                                                <p class="text-sm text-gray-400">${screenshot.description}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
                     <a href="${item.affiliateLink}" target="_blank" rel="noopener noreferrer" 
                        class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-vibe-purple to-vibe-pink rounded-lg text-white font-medium hover:shadow-lg transition-all duration-300 hover:scale-105 vibe-button">
                         ${item.linkText}
                         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                         </svg>
                     </a>
                 </div>
@@ -259,6 +306,13 @@ document.addEventListener('DOMContentLoaded', init);
 // Add keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+        // Close modal if open
+        const modal = document.getElementById('screenshot-modal');
+        if (modal && !modal.classList.contains('hidden')) {
+            closeScreenshotModal();
+            return;
+        }
+        
         // Close all expanded items
         document.querySelectorAll('.checklist-content').forEach(el => {
             el.classList.remove('expanded');
@@ -277,5 +331,32 @@ function smoothScrollToTop() {
     });
 }
 
-// Expose reset function globally
+// Screenshot modal functionality
+function openScreenshotModal(imageSrc, title) {
+    const modal = document.getElementById('screenshot-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    
+    modalImage.src = imageSrc;
+    modalTitle.textContent = title;
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    
+    // Add click outside to close
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeScreenshotModal();
+        }
+    });
+}
+
+function closeScreenshotModal() {
+    const modal = document.getElementById('screenshot-modal');
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+}
+
+// Expose functions globally
 window.resetProgress = resetProgress;
+window.openScreenshotModal = openScreenshotModal;
+window.closeScreenshotModal = closeScreenshotModal;

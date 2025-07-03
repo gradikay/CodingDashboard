@@ -128,6 +128,23 @@
         </section>
     </div>
 
+    <!-- Screenshot Modal -->
+    <div id="screenshot-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+        <div class="relative max-w-4xl max-h-full bg-vibe-card rounded-2xl border border-white/10 overflow-hidden">
+            <div class="flex justify-between items-center p-4 border-b border-white/10">
+                <h3 id="modal-title" class="text-xl font-semibold text-vibe-text"></h3>
+                <button onclick="closeScreenshotModal()" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-4">
+                <img id="modal-image" src="" alt="" class="w-full h-auto rounded-lg">
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="relative z-10 text-center py-8 border-t border-white/10">
         <p class="text-gray-400">
