@@ -235,22 +235,45 @@ function renderChecklist() {
                     ${item.hasScreenshots ? `
                         <div class="mb-6">
                             <h4 class="text-lg font-semibold text-vibe-purple mb-4">Step-by-Step Guide:</h4>
-                            <div class="space-y-4">
-                                ${item.screenshots.map(screenshot => `
-                                    <div class="bg-gradient-to-r from-vibe-card/20 to-purple-900/20 rounded-lg p-4 border border-white/5">
-                                        <div class="flex flex-col md:flex-row gap-4">
-                                            <div class="md:w-2/3">
-                                                <img src="${screenshot.image}" alt="${screenshot.title}" 
-                                                     class="w-full rounded-lg border border-white/10 hover:border-vibe-purple/30 transition-all duration-300 cursor-pointer screenshot-image"
-                                                     onclick="openScreenshotModal('${screenshot.image}', '${screenshot.title}')">
-                                            </div>
-                                            <div class="md:w-1/3 flex flex-col justify-center">
-                                                <h5 class="font-semibold text-vibe-text mb-2">${screenshot.title}</h5>
-                                                <p class="text-sm text-gray-400">${screenshot.description}</p>
+                            <div class="carousel-container relative">
+                                <div class="carousel-track flex transition-transform duration-300 ease-in-out" id="carousel-${item.id}">
+                                    ${item.screenshots.map((screenshot, index) => `
+                                        <div class="carousel-slide min-w-full">
+                                            <div class="bg-gradient-to-r from-vibe-card/20 to-purple-900/20 rounded-lg p-4 border border-white/5">
+                                                <div class="flex flex-col gap-4">
+                                                    <div class="text-center">
+                                                        <img src="${screenshot.image}" alt="${screenshot.title}" 
+                                                             class="w-full max-w-2xl mx-auto rounded-lg border border-white/10 hover:border-vibe-purple/30 transition-all duration-300 cursor-pointer screenshot-image"
+                                                             onclick="openScreenshotModal('${screenshot.image}', '${screenshot.title}')">
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <h5 class="font-semibold text-vibe-text mb-2">${screenshot.title}</h5>
+                                                        <p class="text-sm text-gray-400">${screenshot.description}</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                `).join('')}
+                                    `).join('')}
+                                </div>
+                                
+                                <!-- Navigation buttons -->
+                                <button class="carousel-btn carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-vibe-purple/20 hover:bg-vibe-purple/40 rounded-full p-2 transition-all duration-300" onclick="previousSlide(${item.id})">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                </button>
+                                <button class="carousel-btn carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-vibe-purple/20 hover:bg-vibe-purple/40 rounded-full p-2 transition-all duration-300" onclick="nextSlide(${item.id})">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                
+                                <!-- Slide indicators -->
+                                <div class="flex justify-center mt-4 space-x-2">
+                                    ${item.screenshots.map((_, index) => `
+                                        <button class="carousel-indicator w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-vibe-purple' : 'bg-gray-600'}" onclick="goToSlide(${item.id}, ${index})"></button>
+                                    `).join('')}
+                                </div>
                             </div>
                         </div>
                     ` : ''}
@@ -310,11 +333,22 @@ function addInteractiveEffects() {
     });
 }
 
+// Initialize carousels
+function initializeCarousels() {
+    // Initialize all carousel states
+    checklistData.forEach(item => {
+        if (item.hasScreenshots) {
+            currentSlides[item.id] = 0;
+        }
+    });
+}
+
 // Initialize the application
 function init() {
     renderChecklist();
     updateProgress();
     addInteractiveEffects();
+    initializeCarousels();
     
     // Add a welcome animation
     setTimeout(() => {
@@ -354,6 +388,23 @@ document.addEventListener('keydown', (e) => {
             icon.style.transform = 'rotate(0deg)';
         });
     }
+    
+    // Carousel navigation with arrow keys
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        const expandedContent = document.querySelector('.checklist-content.expanded');
+        if (expandedContent) {
+            const carousel = expandedContent.querySelector('.carousel-track');
+            if (carousel) {
+                const itemId = carousel.id.replace('carousel-', '');
+                if (e.key === 'ArrowLeft') {
+                    previousSlide(parseInt(itemId));
+                } else {
+                    nextSlide(parseInt(itemId));
+                }
+                e.preventDefault();
+            }
+        }
+    }
 });
 
 // Add smooth scrolling for better UX
@@ -389,7 +440,63 @@ function closeScreenshotModal() {
     document.body.style.overflow = 'auto';
 }
 
+// Carousel functionality
+let currentSlides = {};
+
+function nextSlide(itemId) {
+    const carousel = document.getElementById(`carousel-${itemId}`);
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    
+    if (!currentSlides[itemId]) currentSlides[itemId] = 0;
+    currentSlides[itemId] = (currentSlides[itemId] + 1) % totalSlides;
+    
+    updateCarousel(itemId);
+}
+
+function previousSlide(itemId) {
+    const carousel = document.getElementById(`carousel-${itemId}`);
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    
+    if (!currentSlides[itemId]) currentSlides[itemId] = 0;
+    currentSlides[itemId] = (currentSlides[itemId] - 1 + totalSlides) % totalSlides;
+    
+    updateCarousel(itemId);
+}
+
+function goToSlide(itemId, slideIndex) {
+    currentSlides[itemId] = slideIndex;
+    updateCarousel(itemId);
+}
+
+function updateCarousel(itemId) {
+    const carousel = document.getElementById(`carousel-${itemId}`);
+    const indicators = carousel.parentElement.querySelectorAll('.carousel-indicator');
+    
+    if (!carousel) return;
+    
+    const currentSlide = currentSlides[itemId] || 0;
+    const translateX = -currentSlide * 100;
+    
+    carousel.style.transform = `translateX(${translateX}%)`;
+    
+    // Update indicators
+    indicators.forEach((indicator, index) => {
+        if (index === currentSlide) {
+            indicator.classList.remove('bg-gray-600');
+            indicator.classList.add('bg-vibe-purple');
+        } else {
+            indicator.classList.remove('bg-vibe-purple');
+            indicator.classList.add('bg-gray-600');
+        }
+    });
+}
+
 // Expose functions globally
 window.resetProgress = resetProgress;
 window.openScreenshotModal = openScreenshotModal;
 window.closeScreenshotModal = closeScreenshotModal;
+window.nextSlide = nextSlide;
+window.previousSlide = previousSlide;
+window.goToSlide = goToSlide;

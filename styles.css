@@ -226,6 +226,42 @@ html {
     box-shadow: 0 10px 30px rgba(192, 132, 252, 0.2);
 }
 
+/* Carousel styling */
+.carousel-container {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+}
+
+.carousel-btn {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-indicator {
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.carousel-indicator:hover {
+    transform: scale(1.2);
+}
+
 /* Modal styling */
 #screenshot-modal {
     backdrop-filter: blur(10px);
