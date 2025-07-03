@@ -69,6 +69,56 @@ const checklistData = [
                 title: "Step 6: Finish Setup",
                 description: "Complete all the fields and click 'Continue' to finish setting up your Replit account",
                 image: "attached_assets/replit-5-loggedin-field-completed_1751575224719.png"
+            },
+            {
+                title: "Step 7: Choose Free Plan",
+                description: "Select the 'Starter' free plan and click 'Continue with Starter' to proceed without payment",
+                image: "attached_assets/replit-6-starter-plan_1751577736529.png"
+            },
+            {
+                title: "Step 8: Enter Project Prompt",
+                description: "Type this exact prompt: 'Create a mobile-first landing page with animated touch effects, floating elements, and a glowing CTA button—all using pure HTML, CSS, and JS. No frameworks, no libraries, no python files. Just magic.' Then click 'Start chat'",
+                image: "attached_assets/replit-7-type-your-prompt_1751577736529.png"
+            },
+            {
+                title: "Step 9: Review Plan Features",
+                description: "You can click 'Show more features' to see additional options, but don't select them - you can add features later",
+                image: "attached_assets/replit-8-approve-plan_1751577736530.png"
+            },
+            {
+                title: "Step 10: Scroll Through Features",
+                description: "Scroll down to see all available features, but keep the basic plan for now",
+                image: "attached_assets/replit-8-approve-plan-2_1751577736530.png"
+            },
+            {
+                title: "Step 11: Approve and Start",
+                description: "Review the plan and click 'Approve plan & start' to begin creating your project",
+                image: "attached_assets/replit-8-approve-plan-3_1751577736530.png"
+            },
+            {
+                title: "Step 12: Agent Working",
+                description: "Wait for the AI agent to create your project files. This may take a few minutes",
+                image: "attached_assets/replit-9-agent-working_1751577736530.png"
+            },
+            {
+                title: "Step 13: Verify Project Files",
+                description: "Check that your project contains only HTML, CSS, and JS files. The replit.md and .git folder are fine for deployment",
+                image: "attached_assets/replit-10-check-files_1751577736531.png"
+            },
+            {
+                title: "Step 14: Open Git Tools",
+                description: "Click the Tools menu (4 squares icon) and find the 'Git' tool to connect your project to GitHub",
+                image: "attached_assets/replit-11-search-git-tool_1751577736531.png"
+            },
+            {
+                title: "Step 15: Access Git Settings",
+                description: "In the Git tab, click on 'Settings view' to configure your GitHub connection",
+                image: "attached_assets/replit-12-connect-github_1751577736531.png"
+            },
+            {
+                title: "Step 16: Connect to GitHub",
+                description: "Click 'Connect to GitHub' to initialize your GitHub connection and link your project",
+                image: "attached_assets/replit-13-connect-to-github_1751577736532.png"
             }
         ]
     },
