@@ -164,34 +164,20 @@ const checklistData = [
     },
     {
         id: 3,
-        title: "Build your first static website",
-        description: "Create a simple HTML, CSS, and JavaScript website. Start with a basic portfolio or landing page to practice your front-end development skills.",
-        affiliateLink: "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web",
-        linkText: "Learn web development →"
-    },
-    {
-        id: 4,
-        title: "Push the code to GitHub",
-        description: "Upload your website code to a GitHub repository. Learn the basics of Git commands like add, commit, and push to manage your code versions.",
-        affiliateLink: "https://docs.github.com/en/get-started/using-git",
-        linkText: "Learn Git & GitHub →"
-    },
-    {
-        id: 5,
         title: "Buy a cheap domain from GoDaddy",
         description: "Purchase an affordable domain name for your website. A custom domain makes your site look professional and helps with branding.",
         affiliateLink: "https://godaddy.com",
         linkText: "Buy domain on GoDaddy →"
     },
     {
-        id: 6,
+        id: 4,
         title: "Connect domain to GitHub Pages",
         description: "Set up GitHub Pages to host your website and connect your custom domain. This gives you free hosting with automatic deployments from your repository.",
         affiliateLink: "https://docs.github.com/en/pages",
         linkText: "Setup GitHub Pages →"
     },
     {
-        id: 7,
+        id: 5,
         title: "Celebrate!",
         description: "Congratulations! You've successfully deployed your first website with a custom domain. Share your achievement and start planning your next project!",
         affiliateLink: "https://twitter.com/intent/tweet?text=I%20just%20deployed%20my%20first%20website!%20%F0%9F%9A%80",
