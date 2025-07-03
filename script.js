@@ -18,17 +18,17 @@ const checklistData = [
             {
                 title: "Step 2: Fill out the form",
                 description: "Enter your email, create a strong password, choose a username, and select your country",
-                image: "attached_assets/github-2-signup_1751565143888.png"
+                image: "attached_assets/github-2-signup_1751566338107.png"
             },
             {
                 title: "Step 3: Complete the form",
                 description: "Make sure all fields are filled correctly with valid information, then click 'Continue'",
-                image: "attached_assets/github-3-signup_1751565143889.png"
+                image: "attached_assets/github-3-signup_1751566338108.png"
             },
             {
                 title: "Step 4: Welcome to GitHub!",
                 description: "Once logged in, you'll see your dashboard where you can create repositories and start coding",
-                image: "attached_assets/github-4-loggedin_1751565143889.png"
+                image: "attached_assets/github-4-loggedin_1751566338108.png"
             }
         ]
     },
