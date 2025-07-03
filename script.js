@@ -119,6 +119,46 @@ const checklistData = [
                 title: "Step 16: Connect to GitHub",
                 description: "Click 'Connect to GitHub' to initialize your GitHub connection and link your project",
                 image: "attached_assets/replit-13-connect-to-github_1751577736532.png"
+            },
+            {
+                title: "Step 17: Install & Authorize Replit",
+                description: "Install and authorize the Replit GitHub app with the required permissions. Click 'Install & Authorize' to proceed",
+                image: "attached_assets/replit-14-install-authorize-github_1751581593497.png"
+            },
+            {
+                title: "Step 18: Back to Settings",
+                description: "If the 'Create Repository' button doesn't work, refresh the page or use the 'Settings' link at the top to return to the previous page",
+                image: "attached_assets/replit-15-back-to-settings_1751581593497.png"
+            },
+            {
+                title: "Step 19: Refresh & Click Settings",
+                description: "Refresh the page and click on the 'Settings view' again to access the GitHub repository creation options",
+                image: "attached_assets/replit-16-refresh-page-then-click-settings-view_1751581593497.png"
+            },
+            {
+                title: "Step 20: Create Repository",
+                description: "Enter a repository name and description. Make sure to select 'Public' for your Git repository, then click 'Create Repository on GitHub'",
+                image: "attached_assets/replit-17-create-repository_1751581593498.png"
+            },
+            {
+                title: "Step 21: Get Remote URL",
+                description: "You should see a remote URL appear. If not, refresh the page and click 'Create Repository on GitHub' again",
+                image: "attached_assets/replit-18-create-remote-repository_1751581593498.png"
+            },
+            {
+                title: "Step 22: Push Branch",
+                description: "Click the 'Push branch as origin/main' button to upload your code to the GitHub repository",
+                image: "attached_assets/replit-19-push-branch_1751581593498.png"
+            },
+            {
+                title: "Step 23: Confirm Session",
+                description: "When prompted, click 'Confirm for this session' to authenticate and push your code to GitHub",
+                image: "attached_assets/replit-20-confirm-session_1751581593498.png"
+            },
+            {
+                title: "Step 24: Success - Files Committed",
+                description: "Your files have been successfully committed to GitHub! You can see the remote updates and sync status",
+                image: "attached_assets/replit-21-githup-push-success_1751581593498.png"
             }
         ]
     },
