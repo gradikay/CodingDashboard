@@ -143,7 +143,7 @@ const checklistData = [
             {
                 title: "Step 21: Get Remote URL",
                 description: "You should see a remote URL appear. If not, refresh the page and click 'Create Repository on GitHub' again",
-                image: "attached_assets/replit-18-create-remote-repository_1751581593498.png"
+                image: "attached_assets/replit-18-create-remote-repository_1751585314023.png"
             },
             {
                 title: "Step 22: Push Branch",
@@ -164,20 +164,74 @@ const checklistData = [
     },
     {
         id: 3,
+        title: "Setup GitHub Pages deployment",
+        description: "Configure GitHub Pages to host your website for free. This will make your site live on the internet with automatic deployments.",
+        affiliateLink: "https://docs.github.com/en/pages",
+        linkText: "Learn about GitHub Pages →",
+        screenshots: [
+            {
+                title: "Step 1: GitHub Account Overview",
+                description: "Navigate to your GitHub dashboard where you can see your repositories and account overview",
+                image: "attached_assets/github-5-account_1751585153119.png"
+            },
+            {
+                title: "Step 2: Find Your Repository",
+                description: "Look for the repository created from Replit in your 'Top repositories' section and click on it",
+                image: "attached_assets/github-6-repository-created-from-replit-19_1751585153119.png"
+            },
+            {
+                title: "Step 3: Repository Overview",
+                description: "You're now in the repository created from Replit. You can see all your website files here",
+                image: "attached_assets/github-7-repository-overview_1751585153119.png"
+            },
+            {
+                title: "Step 4: Access Settings",
+                description: "Click on the 'Settings' tab at the top of the repository to access configuration options",
+                image: "attached_assets/github-8-settings_1751585153119.png"
+            },
+            {
+                title: "Step 5: Find Pages Section",
+                description: "In the left sidebar, scroll down and click on 'Pages' to access GitHub Pages settings",
+                image: "attached_assets/github-9-pages_1751585153120.png"
+            },
+            {
+                title: "Step 6: Deploy from Branch",
+                description: "Click on 'Deploy from a branch' to set up automatic deployment from your main branch",
+                image: "attached_assets/github-10-branch_1751585153120.png"
+            },
+            {
+                title: "Step 7: Select Main Branch",
+                description: "Click where it says 'None' for branch and select 'main' from the dropdown menu",
+                image: "attached_assets/github-11-select-branch_1751585153120.png"
+            },
+            {
+                title: "Step 8: Select Root Folder",
+                description: "Make sure to select '/ (root)' as the folder to deploy from, then the settings will be ready",
+                image: "attached_assets/github-12-select-root_1751585153120.png"
+            },
+            {
+                title: "Step 9: Save Configuration",
+                description: "Verify that branch is set to 'main' and folder is set to '/ (root)', then click 'Save' to enable GitHub Pages",
+                image: "attached_assets/github-13-branch-all-set_1751585153120.png"
+            }
+        ]
+    },
+    {
+        id: 4,
         title: "Buy a cheap domain from GoDaddy",
         description: "Purchase an affordable domain name for your website. A custom domain makes your site look professional and helps with branding.",
         affiliateLink: "https://godaddy.com",
         linkText: "Buy domain on GoDaddy →"
     },
     {
-        id: 4,
+        id: 5,
         title: "Connect domain to GitHub Pages",
         description: "Set up GitHub Pages to host your website and connect your custom domain. This gives you free hosting with automatic deployments from your repository.",
         affiliateLink: "https://docs.github.com/en/pages",
         linkText: "Setup GitHub Pages →"
     },
     {
-        id: 5,
+        id: 6,
         title: "Celebrate!",
         description: "Congratulations! You've successfully deployed your first website with a custom domain. Share your achievement and start planning your next project!",
         affiliateLink: "https://twitter.com/intent/tweet?text=I%20just%20deployed%20my%20first%20website!%20%F0%9F%9A%80",
