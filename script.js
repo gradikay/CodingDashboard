@@ -168,6 +168,7 @@ const checklistData = [
         description: "Configure GitHub Pages to host your website for free. This will make your site live on the internet with automatic deployments.",
         affiliateLink: "https://docs.github.com/en/pages",
         linkText: "Learn about GitHub Pages →",
+        hasScreenshots: true,
         screenshots: [
             {
                 title: "Step 1: GitHub Account Overview",
