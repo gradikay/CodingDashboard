@@ -321,11 +321,11 @@ function renderChecklist() {
                                 <!-- Step navigation -->
                                 <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                                     ${item.screenshots.map((screenshot, index) => `
-                                        <button class="step-nav-btn text-center p-3 rounded-lg border transition-all duration-300 ${index === 0 ? 'bg-vibe-purple/20 border-vibe-purple/50' : 'bg-gray-800/50 border-gray-600/50 hover:bg-gray-700/50'}" onclick="goToSlide(${item.id}, ${index})">
+                                        <button class="step-nav-btn text-center p-3 rounded-lg border transition-all duration-300 ${index === 0 ? 'bg-blue-500/20 border-blue-500/50' : 'bg-gray-800/50 border-gray-600/50 hover:bg-gray-700/50'}" onclick="goToSlide(${item.id}, ${index})">
                                             <div class="flex flex-col items-center space-y-2">
-                                                <div class="flex-shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center step-indicator ${index === 0 ? 'border-vibe-purple bg-vibe-purple/20' : 'border-gray-500'}">
+                                                <div class="flex-shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center step-indicator ${index === 0 ? 'border-blue-500 bg-blue-500/20' : 'border-gray-500'}">
                                                     <span class="text-sm font-bold step-number">${index + 1}</span>
-                                                    <svg class="w-5 h-5 text-vibe-green hidden step-check" fill="currentColor" viewBox="0 0 20 20">
+                                                    <svg class="w-5 h-5 text-green-500 hidden step-check" fill="currentColor" viewBox="0 0 20 20">
                                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                                     </svg>
                                                 </div>
@@ -548,9 +548,9 @@ function updateCarousel(itemId) {
         const stepCheck = button.querySelector('.step-check');
         
         // Reset all buttons
-        button.classList.remove('bg-vibe-purple/20', 'border-vibe-purple/50');
+        button.classList.remove('bg-blue-500/20', 'border-blue-500/50');
         button.classList.add('bg-gray-800/50', 'border-gray-600/50');
-        stepIndicator.classList.remove('border-vibe-purple', 'bg-vibe-purple/20', 'border-vibe-green', 'bg-vibe-green/20');
+        stepIndicator.classList.remove('border-blue-500', 'bg-blue-500/20', 'border-green-500', 'bg-green-500/20');
         stepIndicator.classList.add('border-gray-500');
         stepNumber.classList.remove('hidden');
         stepCheck.classList.add('hidden');
@@ -558,13 +558,13 @@ function updateCarousel(itemId) {
         if (index === currentSlide) {
             // Current step - highlight
             button.classList.remove('bg-gray-800/50', 'border-gray-600/50');
-            button.classList.add('bg-vibe-purple/20', 'border-vibe-purple/50');
+            button.classList.add('bg-blue-500/20', 'border-blue-500/50');
             stepIndicator.classList.remove('border-gray-500');
-            stepIndicator.classList.add('border-vibe-purple', 'bg-vibe-purple/20');
+            stepIndicator.classList.add('border-blue-500', 'bg-blue-500/20');
         } else if (index < currentSlide) {
             // Completed steps - show checkmark
             stepIndicator.classList.remove('border-gray-500');
-            stepIndicator.classList.add('border-vibe-green', 'bg-vibe-green/20');
+            stepIndicator.classList.add('border-green-500', 'bg-green-500/20');
             stepNumber.classList.add('hidden');
             stepCheck.classList.remove('hidden');
         }
