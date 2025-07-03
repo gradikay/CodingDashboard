@@ -319,17 +319,17 @@ function renderChecklist() {
                                 </button>
                                 
                                 <!-- Step navigation -->
-                                <div class="mt-6 space-y-2 max-h-48 overflow-y-auto">
+                                <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                                     ${item.screenshots.map((screenshot, index) => `
-                                        <button class="step-nav-btn w-full text-left p-3 rounded-lg border transition-all duration-300 ${index === 0 ? 'bg-vibe-purple/20 border-vibe-purple/50' : 'bg-gray-800/50 border-gray-600/50 hover:bg-gray-700/50'}" onclick="goToSlide(${item.id}, ${index})">
-                                            <div class="flex items-center space-x-3">
-                                                <div class="flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center step-indicator ${index === 0 ? 'border-vibe-purple bg-vibe-purple/20' : 'border-gray-500'}">
-                                                    <span class="text-xs font-bold step-number">${index + 1}</span>
-                                                    <svg class="w-4 h-4 text-vibe-green hidden step-check" fill="currentColor" viewBox="0 0 20 20">
+                                        <button class="step-nav-btn text-center p-3 rounded-lg border transition-all duration-300 ${index === 0 ? 'bg-vibe-purple/20 border-vibe-purple/50' : 'bg-gray-800/50 border-gray-600/50 hover:bg-gray-700/50'}" onclick="goToSlide(${item.id}, ${index})">
+                                            <div class="flex flex-col items-center space-y-2">
+                                                <div class="flex-shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center step-indicator ${index === 0 ? 'border-vibe-purple bg-vibe-purple/20' : 'border-gray-500'}">
+                                                    <span class="text-sm font-bold step-number">${index + 1}</span>
+                                                    <svg class="w-5 h-5 text-vibe-green hidden step-check" fill="currentColor" viewBox="0 0 20 20">
                                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                                     </svg>
                                                 </div>
-                                                <span class="text-sm font-medium text-gray-300 step-title">${screenshot.title.replace(/^Step \d+: /, '')}</span>
+                                                <span class="text-xs font-medium text-gray-300 step-title text-center leading-tight">${screenshot.title.replace(/^Step \d+: /, '')}</span>
                                             </div>
                                         </button>
                                     `).join('')}
