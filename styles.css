@@ -252,14 +252,36 @@ html {
     transform: translateY(-50%) scale(1.1);
 }
 
-.carousel-indicator {
+/* Step navigation styling */
+.step-nav-btn {
     cursor: pointer;
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.carousel-indicator:hover {
-    transform: scale(1.2);
+.step-nav-btn:hover {
+    background: rgba(75, 85, 99, 0.3) !important;
+    border-color: rgba(192, 132, 252, 0.3) !important;
+}
+
+.step-indicator {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.step-number {
+    transition: all 0.3s ease;
+}
+
+.step-check {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.step-title {
+    transition: all 0.3s ease;
 }
 
 /* Modal styling */
