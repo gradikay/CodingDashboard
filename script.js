@@ -37,7 +37,40 @@ const checklistData = [
         title: "Connect GitHub to Replit",
         description: "Link your GitHub account to Replit for seamless code editing and deployment. This integration allows you to work on your projects from anywhere.",
         affiliateLink: "https://replit.com",
-        linkText: "Connect on Replit →"
+        linkText: "Connect on Replit →",
+        hasScreenshots: true,
+        screenshots: [
+            {
+                title: "Step 1: Go to Replit and Sign Up",
+                description: "Visit replit.com and click the 'Sign up' button in the top right corner",
+                image: "attached_assets/replit-1-signup_1751575224716.png"
+            },
+            {
+                title: "Step 2: Choose GitHub Sign-up",
+                description: "Select 'Continue with GitHub' to link your GitHub account with Replit",
+                image: "attached_assets/replit-2-signup-with-github_1751575224718.png"
+            },
+            {
+                title: "Step 3: Authorize Replit",
+                description: "GitHub will ask for permission to connect to Replit. Click 'Authorize Replit' to continue",
+                image: "attached_assets/replit-3-sginup-github-permission_1751575224719.png"
+            },
+            {
+                title: "Step 4: Verify Your Email",
+                description: "Check your email and click the verification link to confirm your account",
+                image: "attached_assets/replit-4-signup-verification_1751575224719.png"
+            },
+            {
+                title: "Step 5: Complete Your Profile",
+                description: "Fill in your first name, last name, and choose how you plan to use Replit",
+                image: "attached_assets/replit-5-loggedin-empty-field_1751575224719.png"
+            },
+            {
+                title: "Step 6: Finish Setup",
+                description: "Complete all the fields and click 'Continue' to finish setting up your Replit account",
+                image: "attached_assets/replit-5-loggedin-field-completed_1751575224719.png"
+            }
+        ]
     },
     {
         id: 3,
