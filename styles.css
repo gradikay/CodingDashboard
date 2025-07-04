@@ -496,6 +496,36 @@ a[class*="vibe-button"],
     border: 2px solid #B8860B !important;
 }
 
+/* Platform Links - Modern Design */
+.platform-link {
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.platform-link:hover {
+    transform: translateY(-2px);
+}
+
+/* Ensure platform links maintain their gradient colors in light mode */
+[data-theme="light"] .platform-link .bg-gradient-to-r {
+    background: linear-gradient(to right, var(--card-bg), var(--card-bg-light)) !important;
+    border: 2px solid var(--border-mystical) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .platform-link .text-gray-300 {
+    color: var(--text-muted) !important;
+}
+
+[data-theme="light"] .platform-link .text-orange-100 {
+    color: var(--text-muted) !important;
+}
+
+[data-theme="light"] .platform-link .text-green-100 {
+    color: var(--text-muted) !important;
+}
+
 /* Fix step indicator icons - ensure checkmarks are visible */
 .step-check {
     color: #FFFFFF !important;
