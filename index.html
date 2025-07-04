@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vibe Coding Course Dashboard</title>
+    <title>Web Development Course Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -12,14 +12,16 @@
             theme: {
                 extend: {
                     colors: {
-                        'vibe-purple': '#C084FC',
-                        'vibe-pink': '#F472B6',
-                        'vibe-blue': '#60A5FA',
-                        'vibe-green': '#34D399',
-                        'vibe-yellow': '#FBBF24',
-                        'vibe-bg': '#0F0F23',
-                        'vibe-card': '#1A1A2E',
-                        'vibe-text': '#E5E7EB'
+                        'primary-blue': '#2563EB',
+                        'primary-green': '#059669',
+                        'primary-gray': '#374151',
+                        'bg-light': '#FFFFFF',
+                        'bg-secondary': '#F8FAFC',
+                        'card-bg': '#FFFFFF',
+                        'text-primary': '#1F2937',
+                        'text-secondary': '#6B7280',
+                        'border-light': '#E5E7EB',
+                        'accent-light': '#F3F4F6'
                     },
                     fontFamily: {
                         'sans': ['Inter', 'sans-serif'],
@@ -30,61 +32,54 @@
         }
     </script>
 </head>
-<body class="bg-gradient-to-br from-vibe-bg via-purple-900 to-vibe-bg min-h-screen font-sans text-vibe-text">
-    <!-- Animated Background Elements -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="floating-orb bg-vibe-purple opacity-20"></div>
-        <div class="floating-orb bg-vibe-pink opacity-15" style="animation-delay: -2s;"></div>
-        <div class="floating-orb bg-vibe-blue opacity-10" style="animation-delay: -4s;"></div>
-    </div>
-
+<body class="bg-bg-secondary min-h-screen font-sans text-text-primary">
     <!-- Main Container -->
-    <div class="relative z-10 container mx-auto px-4 py-8 max-w-4xl">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
         <!-- Header -->
-        <header class="text-center mb-12">
-            <div class="inline-block p-6 rounded-2xl bg-gradient-to-r from-vibe-purple/20 to-vibe-pink/20 backdrop-blur-sm border border-white/10 glow-card mb-6">
-                <h1 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-vibe-purple to-vibe-pink bg-clip-text text-transparent mb-2">
-                    Vibe Coding Dashboard
+        <header class="text-center mb-12 header-section">
+            <div class="inline-block p-8 rounded-2xl bg-card-bg border border-border-light shadow-lg glow-card mb-6">
+                <h1 class="text-4xl md:text-5xl font-bold text-text-primary mb-2">
+                    Web Development Course
                 </h1>
-                <p class="text-lg md:text-xl text-gray-300 font-mono">
-                    Your journey to web development mastery ✨
+                <p class="text-lg md:text-xl text-text-secondary">
+                    Your step-by-step guide to building and deploying websites
                 </p>
             </div>
         </header>
 
         <!-- Welcome Section -->
         <section class="mb-12">
-            <div class="bg-gradient-to-r from-vibe-card/40 to-purple-900/40 backdrop-blur-sm rounded-2xl p-8 border border-white/10 glow-card">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 bg-gradient-to-r from-vibe-blue to-vibe-green bg-clip-text text-transparent">
-                    Welcome to Your Coding Journey! 🚀
+            <div class="bg-card-bg rounded-2xl p-8 border border-border-light shadow-lg glow-card">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-text-primary">
+                    Welcome to Your Web Development Journey
                 </h2>
-                <p class="text-center text-gray-300 mb-8 text-lg">
+                <p class="text-center text-text-secondary mb-8 text-lg">
                     Ready to build amazing websites? Let's get you set up with the essential tools and platforms!
                 </p>
                 
-                <!-- Affiliate Links -->
+                <!-- Platform Links -->
                 <div class="grid md:grid-cols-3 gap-6">
                     <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="affiliate-link group">
-                        <div class="text-center p-6 rounded-xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/10 hover:border-vibe-purple/50 transition-all duration-300 hover:scale-105">
+                        <div class="text-center p-6 rounded-xl bg-accent-light border border-border-light hover:border-primary-blue transition-all duration-300 hover:scale-105 hover:shadow-lg">
                             <div class="text-4xl mb-3">🐙</div>
-                            <h3 class="font-bold text-lg mb-2 group-hover:text-vibe-purple transition-colors">GitHub</h3>
-                            <p class="text-sm text-gray-400">Version control & hosting</p>
+                            <h3 class="font-bold text-lg mb-2 group-hover:text-primary-blue transition-colors text-text-primary">GitHub</h3>
+                            <p class="text-sm text-text-secondary">Version control & hosting</p>
                         </div>
                     </a>
                     
                     <a href="https://replit.com" target="_blank" rel="noopener noreferrer" class="affiliate-link group">
-                        <div class="text-center p-6 rounded-xl bg-gradient-to-br from-orange-800/50 to-red-900/50 border border-white/10 hover:border-vibe-pink/50 transition-all duration-300 hover:scale-105">
+                        <div class="text-center p-6 rounded-xl bg-accent-light border border-border-light hover:border-primary-blue transition-all duration-300 hover:scale-105 hover:shadow-lg">
                             <div class="text-4xl mb-3">🔧</div>
-                            <h3 class="font-bold text-lg mb-2 group-hover:text-vibe-pink transition-colors">Replit</h3>
-                            <p class="text-sm text-gray-400">Online IDE & deployment</p>
+                            <h3 class="font-bold text-lg mb-2 group-hover:text-primary-blue transition-colors text-text-primary">Replit</h3>
+                            <p class="text-sm text-text-secondary">Online IDE & deployment</p>
                         </div>
                     </a>
                     
                     <a href="https://godaddy.com" target="_blank" rel="noopener noreferrer" class="affiliate-link group">
-                        <div class="text-center p-6 rounded-xl bg-gradient-to-br from-green-800/50 to-emerald-900/50 border border-white/10 hover:border-vibe-green/50 transition-all duration-300 hover:scale-105">
+                        <div class="text-center p-6 rounded-xl bg-accent-light border border-border-light hover:border-primary-green transition-all duration-300 hover:scale-105 hover:shadow-lg">
                             <div class="text-4xl mb-3">🌐</div>
-                            <h3 class="font-bold text-lg mb-2 group-hover:text-vibe-green transition-colors">GoDaddy</h3>
-                            <p class="text-sm text-gray-400">Domain registration</p>
+                            <h3 class="font-bold text-lg mb-2 group-hover:text-primary-green transition-colors text-text-primary">GoDaddy</h3>
+                            <p class="text-sm text-text-secondary">Domain registration</p>
                         </div>
                     </a>
                 </div>
@@ -93,13 +88,13 @@
 
         <!-- Progress Overview -->
         <section class="mb-8">
-            <div class="bg-gradient-to-r from-vibe-card/40 to-purple-900/40 backdrop-blur-sm rounded-2xl p-6 border border-white/10 glow-card">
+            <div class="bg-card-bg rounded-2xl p-6 border border-border-light shadow-lg glow-card">
                 <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-xl font-bold text-vibe-text">Your Progress</h3>
-                    <span id="progress-text" class="text-sm font-mono text-gray-400">0/7 completed</span>
+                    <h3 class="text-xl font-bold text-text-primary">Your Progress</h3>
+                    <span id="progress-text" class="text-sm font-mono text-text-secondary">0/5 completed</span>
                 </div>
-                <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
-                    <div id="progress-bar" class="h-full bg-gradient-to-r from-vibe-purple to-vibe-pink rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
+                <div class="w-full bg-accent-light rounded-full h-3 overflow-hidden">
+                    <div id="progress-bar" class="h-full rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
                 </div>
             </div>
         </section>
@@ -113,15 +108,15 @@
 
         <!-- Celebration Section (hidden by default) -->
         <section id="celebration" class="hidden mb-12">
-            <div class="text-center p-8 rounded-2xl bg-gradient-to-r from-vibe-green/20 to-vibe-yellow/20 backdrop-blur-sm border border-vibe-green/30 glow-card celebration-animation">
+            <div class="text-center p-8 rounded-2xl bg-card-bg border border-primary-green shadow-lg glow-card celebration-animation">
                 <div class="text-6xl mb-4">🎉</div>
-                <h2 class="text-3xl font-bold mb-4 bg-gradient-to-r from-vibe-green to-vibe-yellow bg-clip-text text-transparent">
+                <h2 class="text-3xl font-bold mb-4 text-primary-green">
                     Congratulations!
                 </h2>
-                <p class="text-lg text-gray-300 mb-6">
-                    You've completed all the steps! You're now ready to build amazing websites! 🚀
+                <p class="text-lg text-text-secondary mb-6">
+                    You've completed all the steps! You're now ready to build amazing websites!
                 </p>
-                <button onclick="resetProgress()" class="px-6 py-3 bg-gradient-to-r from-vibe-purple to-vibe-pink rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <button onclick="resetProgress()" class="px-6 py-3 bg-primary-blue text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 hover:bg-blue-600">
                     Start New Journey
                 </button>
             </div>
@@ -130,10 +125,10 @@
 
     <!-- Screenshot Modal -->
     <div id="screenshot-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
-        <div class="relative max-w-4xl max-h-full bg-vibe-card rounded-2xl border border-white/10 overflow-hidden">
-            <div class="flex justify-between items-center p-4 border-b border-white/10">
-                <h3 id="modal-title" class="text-xl font-semibold text-vibe-text"></h3>
-                <button onclick="closeScreenshotModal()" class="text-gray-400 hover:text-white transition-colors">
+        <div class="relative max-w-4xl max-h-full bg-card-bg rounded-2xl border border-border-light overflow-hidden shadow-2xl">
+            <div class="flex justify-between items-center p-4 border-b border-border-light">
+                <h3 id="modal-title" class="text-xl font-semibold text-text-primary"></h3>
+                <button onclick="closeScreenshotModal()" class="text-text-secondary hover:text-text-primary transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -146,9 +141,9 @@
     </div>
 
     <!-- Footer -->
-    <footer class="relative z-10 text-center py-8 border-t border-white/10">
-        <p class="text-gray-400">
-            Made with 💻 by <span class="text-vibe-purple font-semibold">Vibe Coder</span>
+    <footer class="text-center py-8 border-t border-border-light">
+        <p class="text-text-secondary">
+            Made with 💻 for web development learning
         </p>
     </footer>
 

@@ -383,7 +383,7 @@ function renderChecklist() {
                         ${item.id}
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-lg font-semibold text-vibe-text">${item.title}</h3>
+                        <h3 class="text-lg font-semibold text-text-primary">${item.title}</h3>
                     </div>
                     <div class="flex items-center space-x-3">
                         <input 
@@ -401,26 +401,26 @@ function renderChecklist() {
             </div>
             
             <div id="content-${item.id}" class="checklist-content px-6 pb-6">
-                <div class="mt-4 pt-4 border-t border-white/10">
-                    <p class="text-gray-300 mb-4 leading-relaxed">${item.description}</p>
+                <div class="mt-4 pt-4 border-t border-border-light">
+                    <p class="text-text-secondary mb-4 leading-relaxed">${item.description}</p>
                     
                     ${item.hasScreenshots ? `
                         <div class="mb-6">
-                            <h4 class="text-lg font-semibold text-vibe-purple mb-4">Step-by-Step Guide:</h4>
+                            <h4 class="text-lg font-semibold text-primary-blue mb-4">Step-by-Step Guide:</h4>
                             <div class="carousel-container relative">
                                 <div class="carousel-track flex transition-transform duration-300 ease-in-out" id="carousel-${item.id}">
                                     ${item.screenshots.map((screenshot, index) => `
                                         <div class="carousel-slide min-w-full">
-                                            <div class="bg-gradient-to-r from-vibe-card/20 to-purple-900/20 rounded-lg p-4 border border-white/5">
+                                            <div class="bg-card-bg rounded-lg p-4 border border-border-light">
                                                 <div class="flex flex-col gap-4">
                                                     <div class="text-center">
                                                         <img src="${screenshot.image}" alt="${screenshot.title}" 
-                                                             class="w-full max-w-2xl mx-auto rounded-lg border border-white/10 hover:border-vibe-purple/30 transition-all duration-300 cursor-pointer screenshot-image"
+                                                             class="w-full max-w-2xl mx-auto rounded-lg border border-border-light hover:border-primary-blue transition-all duration-300 cursor-pointer screenshot-image"
                                                              onclick="openScreenshotModal('${screenshot.image}', '${screenshot.title}')">
                                                     </div>
                                                     <div class="text-center">
-                                                        <h5 class="font-semibold text-vibe-text mb-2">${screenshot.title}</h5>
-                                                        <p class="text-sm text-gray-400">${screenshot.description}</p>
+                                                        <h5 class="font-semibold text-text-primary mb-2">${screenshot.title}</h5>
+                                                        <p class="text-sm text-text-secondary">${screenshot.description}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -429,13 +429,13 @@ function renderChecklist() {
                                 </div>
                                 
                                 <!-- Navigation buttons -->
-                                <button class="carousel-btn carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-vibe-purple/20 hover:bg-vibe-purple/40 rounded-full p-2 transition-all duration-300" onclick="previousSlide(${item.id})">
-                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <button class="carousel-btn carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2" onclick="previousSlide(${item.id})">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                                     </svg>
                                 </button>
-                                <button class="carousel-btn carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-vibe-purple/20 hover:bg-vibe-purple/40 rounded-full p-2 transition-all duration-300" onclick="nextSlide(${item.id})">
-                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <button class="carousel-btn carousel-next absolute right-2 top-1/2 transform -translate-y-1/2" onclick="nextSlide(${item.id})">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                     </svg>
                                 </button>
@@ -443,15 +443,15 @@ function renderChecklist() {
                                 <!-- Step navigation -->
                                 <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                                     ${item.screenshots.map((screenshot, index) => `
-                                        <button class="step-nav-btn text-center p-3 rounded-lg border transition-all duration-300 ${index === 0 ? 'bg-blue-500/20 border-blue-500/50' : 'bg-gray-800/50 border-gray-600/50 hover:bg-gray-700/50'}" onclick="goToSlide(${item.id}, ${index})">
+                                        <button class="step-nav-btn text-center p-3 rounded-lg border transition-all duration-300 ${index === 0 ? 'active' : ''}" onclick="goToSlide(${item.id}, ${index})">
                                             <div class="flex flex-col items-center space-y-2">
-                                                <div class="flex-shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center step-indicator ${index === 0 ? 'border-blue-500 bg-blue-500/20' : 'border-gray-500'}">
+                                                <div class="flex-shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center step-indicator ${index === 0 ? 'border-primary-blue bg-primary-blue text-white' : 'border-text-secondary'}">
                                                     <span class="text-sm font-bold step-number">${index + 1}</span>
-                                                    <svg class="w-5 h-5 text-green-500 hidden step-check" fill="currentColor" viewBox="0 0 20 20">
+                                                    <svg class="w-5 h-5 text-primary-green hidden step-check" fill="currentColor" viewBox="0 0 20 20">
                                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                                     </svg>
                                                 </div>
-                                                <span class="text-xs font-medium text-gray-300 step-title text-center leading-tight">${screenshot.title.replace(/^Step \d+: /, '')}</span>
+                                                <span class="text-xs font-medium text-text-secondary step-title text-center leading-tight">${screenshot.title.replace(/^Step \d+: /, '')}</span>
                                             </div>
                                         </button>
                                     `).join('')}
@@ -461,7 +461,7 @@ function renderChecklist() {
                     ` : ''}
                     
                     <a href="${item.affiliateLink}" target="_blank" rel="noopener noreferrer" 
-                       class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-vibe-purple to-vibe-pink rounded-lg text-white font-medium hover:shadow-lg transition-all duration-300 hover:scale-105 vibe-button">
+                       class="vibe-button">
                         ${item.linkText}
                         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
