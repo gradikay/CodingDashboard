@@ -474,16 +474,22 @@ function createConfetti() {
     const celebrationText = document.createElement('div');
     celebrationText.innerHTML = '🎉 CONGRATULATIONS! 🎉';
     celebrationText.style.position = 'fixed';
-    celebrationText.style.top = '50%';
+    celebrationText.style.top = '20%';
     celebrationText.style.left = '50%';
     celebrationText.style.transform = 'translate(-50%, -50%)';
-    celebrationText.style.fontSize = '2rem';
+    celebrationText.style.fontSize = window.innerWidth < 768 ? '1.5rem' : '2rem';
     celebrationText.style.fontWeight = 'bold';
     celebrationText.style.color = '#FFD700';
     celebrationText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.8)';
+    celebrationText.style.background = 'rgba(0,0,0,0.8)';
+    celebrationText.style.padding = '10px 20px';
+    celebrationText.style.borderRadius = '12px';
+    celebrationText.style.border = '2px solid #FFD700';
     celebrationText.style.zIndex = '10000';
     celebrationText.style.pointerEvents = 'none';
     celebrationText.style.animation = 'bounce 1s ease-in-out';
+    celebrationText.style.maxWidth = '90vw';
+    celebrationText.style.textAlign = 'center';
     
     document.body.appendChild(celebrationText);
     
