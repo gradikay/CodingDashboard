@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a front-end web application for a coding course dashboard that guides users through their web development learning journey. The application is built as a static website using HTML, CSS (with Tailwind CSS), and JavaScript, featuring a magical Harry Potter-inspired dark theme with floating mystical elements, animated background effects, and an interactive checklist system with achievement badges.
+This is a front-end web application for a coding course dashboard that guides users through their web development learning journey. The application is built as a static website using HTML, CSS (with Tailwind CSS), and JavaScript, featuring a dual-theme system with a magical Harry Potter-inspired dark mode and a clean light mode. It includes floating mystical elements, animated effects, an interactive checklist system with achievement badges, and a theme toggle with localStorage persistence.
 
 ## System Architecture
 
@@ -34,6 +34,13 @@ This is a front-end web application for a coding course dashboard that guides us
 - **Special Effects**: Confetti animation for legendary achievements
 - **Session Tracking**: Advanced tracking for speed runs and perfect completion runs
 - **Persistence**: Achievement progress saved to local storage
+
+### 3. Dual Theme System
+- **Dark Magical Mode**: Harry Potter-inspired theme with mystical colors and floating elements
+- **Light Clean Mode**: Professional clean theme with high contrast and accessibility
+- **Theme Toggle**: Fixed position button for easy switching between modes
+- **Persistence**: User theme preference saved to localStorage
+- **Adaptive Elements**: Floating magical elements hidden in light mode for clean appearance
 
 ### 2. Visual Design Elements
 - **Animated Background**: Floating orb elements with CSS animations
@@ -91,6 +98,7 @@ The application guides users through 5 key steps:
 
 ## Changelog
 
+- July 04, 2025. Added dual-theme system with dark magical mode and clean light mode, including theme toggle button and localStorage persistence
 - July 04, 2025. Transformed to magical Harry Potter-inspired theme with floating mystical elements, improved tab contrast, and added clear progress button
 - July 01, 2025. Initial setup
 

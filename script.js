@@ -748,8 +748,48 @@ function initializeCarousels() {
     });
 }
 
+// Theme management
+function loadTheme() {
+    const savedTheme = localStorage.getItem('courseTheme') || 'dark';
+    applyTheme(savedTheme);
+    return savedTheme;
+}
+
+function saveTheme(theme) {
+    localStorage.setItem('courseTheme', theme);
+}
+
+function applyTheme(theme) {
+    const body = document.body;
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+    const floatingElements = document.querySelectorAll('.floating-magical-element');
+    
+    if (theme === 'light') {
+        body.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = 'Dark Mode';
+        // Hide magical floating elements in light mode
+        floatingElements.forEach(el => el.style.display = 'none');
+    } else {
+        body.removeAttribute('data-theme');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Light Mode';
+        // Show magical floating elements in dark mode
+        floatingElements.forEach(el => el.style.display = 'block');
+    }
+}
+
+function toggleTheme() {
+    const currentTheme = document.body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    applyTheme(newTheme);
+    saveTheme(newTheme);
+}
+
 // Initialize the application
 function init() {
+    loadTheme(); // Load saved theme preference
     renderChecklist();
     updateProgress();
     addInteractiveEffects();

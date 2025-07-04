@@ -34,7 +34,13 @@
     </script>
 </head>
 <body class="bg-bg-secondary min-h-screen font-sans text-text-primary">
-    <!-- Magical floating elements -->
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-icon">🌙</span>
+        <span id="theme-text">Light Mode</span>
+    </button>
+
+    <!-- Magical floating elements (hidden in light mode) -->
     <div class="floating-magical-element floating-star" style="top: 10%; left: 10%;">⭐</div>
     <div class="floating-magical-element floating-moon" style="top: 20%; right: 15%;">🌙</div>
     <div class="floating-magical-element floating-star" style="top: 60%; left: 20%;">✨</div>

@@ -1,6 +1,7 @@
-/* Harry Potter Magical Theme Styles */
+/* Dual Theme System - Dark Magic & Light Mode */
 
 :root {
+    /* Dark Magical Theme (Default) */
     --primary-gold: #FFD700;
     --primary-burgundy: #8B0000;
     --primary-emerald: #50C878;
@@ -21,6 +22,30 @@
     --shadow-mystical: 0 4px 20px rgba(255, 215, 0, 0.3);
     --glow-gold: 0 0 20px rgba(255, 215, 0, 0.6);
     --glow-emerald: 0 0 15px rgba(80, 200, 120, 0.5);
+}
+
+/* Light Mode Theme */
+[data-theme="light"] {
+    --primary-gold: #B8860B;
+    --primary-burgundy: #8B0000;
+    --primary-emerald: #228B22;
+    --primary-sapphire: #4169E1;
+    --primary-bronze: #CD7F32;
+    --accent-dark: #E8E8F0;
+    --accent-mystical: #F0F0F8;
+    --bg-dark: #FFFFFF;
+    --bg-secondary: #F8F9FA;
+    --card-bg: #FFFFFF;
+    --card-bg-light: #F8F9FA;
+    --text-primary: #1F2937;
+    --text-secondary: #B8860B;
+    --text-mystical: #374151;
+    --text-muted: #6B7280;
+    --border-mystical: #D1D5DB;
+    --accent-light: #F3F4F6;
+    --shadow-mystical: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --glow-gold: 0 0 20px rgba(184, 134, 11, 0.3);
+    --glow-emerald: 0 0 15px rgba(34, 139, 34, 0.3);
 }
 
 body {
@@ -594,51 +619,127 @@ body, body * {
     color: var(--primary-emerald) !important;
 }
 
-/* EXTREME contrast fixes for problematic elements */
-.checklist-item p,
-.checklist-item span,
-.checklist-item div,
-.checklist-item li {
+/* Dark Mode Text Contrast */
+:root .checklist-item p,
+:root .checklist-item span,
+:root .checklist-item div,
+:root .checklist-item li,
+:root .step-title,
+:root .checklist-item h3,
+:root .affiliate-link h3,
+:root .affiliate-link p,
+:root p, :root span, :root div, :root li, :root a,
+:root header h1, :root header p,
+:root .achievement-badge {
     color: #FFFFFF !important;
 }
 
-/* Step titles and descriptions */
-.step-title,
-.checklist-item h3 {
-    color: #FFFFFF !important;
-    font-weight: 700 !important;
-}
-
-/* Progress text */
-#progress-text {
+:root #progress-text {
     color: var(--primary-gold) !important;
     font-weight: 700 !important;
 }
 
-/* Platform link text */
-.affiliate-link h3,
-.affiliate-link p {
-    color: #FFFFFF !important;
+/* Light Mode Text Contrast */
+[data-theme="light"] .checklist-item p,
+[data-theme="light"] .checklist-item span,
+[data-theme="light"] .checklist-item div,
+[data-theme="light"] .checklist-item li,
+[data-theme="light"] .step-title,
+[data-theme="light"] .checklist-item h3,
+[data-theme="light"] .affiliate-link h3,
+[data-theme="light"] .affiliate-link p,
+[data-theme="light"] p, [data-theme="light"] span, 
+[data-theme="light"] div, [data-theme="light"] li, [data-theme="light"] a,
+[data-theme="light"] header h1, [data-theme="light"] header p,
+[data-theme="light"] .achievement-badge {
+    color: var(--text-primary) !important;
 }
 
-/* Force all paragraph and span elements to be white */
-p, span, div, li, a {
-    color: #FFFFFF !important;
+[data-theme="light"] #progress-text {
+    color: var(--primary-gold) !important;
+    font-weight: 700 !important;
 }
 
-/* Exception for buttons and special elements */
+/* Button text overrides for both themes */
 .vibe-button, .vibe-button *, 
 .step-nav-btn.active, .step-nav-btn.active * {
     color: #000000 !important;
 }
 
-/* Header text overrides */
-header h1, header p {
+/* Theme toggle button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--card-bg);
+    border: 2px solid var(--border-mystical);
+    border-radius: 50px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: var(--glow-gold);
+}
+
+/* Light mode specific adjustments */
+[data-theme="light"] .floating-magical-element {
+    display: none !important;
+}
+
+[data-theme="light"] .magical-text {
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-sapphire));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="light"] .magical-card::before {
+    background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.1), transparent);
+}
+
+[data-theme="light"] .confetti-piece {
+    background: var(--primary-gold);
+}
+
+/* Light mode header adjustments */
+[data-theme="light"] .header-section h1 {
+    text-shadow: none;
+}
+
+/* Ensure proper contrast in light mode */
+[data-theme="light"] .step-nav-btn {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .step-nav-btn:hover {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .vibe-button {
+    background: linear-gradient(135deg, var(--primary-gold), #B8860B) !important;
+    color: #FFFFFF !important;
+    border-color: var(--primary-gold) !important;
+}
+
+[data-theme="light"] .vibe-button * {
     color: #FFFFFF !important;
 }
 
-/* Achievement badge text */
-.achievement-badge {
+[data-theme="light"] .step-nav-btn.active {
+    background: linear-gradient(135deg, var(--primary-gold), #B8860B) !important;
+    color: #FFFFFF !important;
+}
+
+[data-theme="light"] .step-nav-btn.active * {
     color: #FFFFFF !important;
 }
 
