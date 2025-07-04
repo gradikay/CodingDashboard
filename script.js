@@ -343,7 +343,10 @@ const checklistData = [
     {
         id: 5,
         title: "Celebrate! 🎉",
-        description: "Congratulations! You've successfully created and deployed your first website. Your site is now live on the internet for everyone to see! <strong>Ready to build more projects?</strong> You can mark this complete and start your next web development adventure!"
+        description: "Congratulations! You've successfully created and deployed your first website. Your site is now live on the internet for everyone to see! <strong>Ready to build more projects?</strong> You can mark this complete and start your next web development adventure!",
+        affiliateLink: "javascript:void(0)",
+        linkText: "🎉 Celebrate! 🎉",
+        onClick: "createConfetti"
     }
 ];
 
@@ -684,13 +687,22 @@ function renderChecklist() {
                         </div>
                     ` : ''}
                     
-                    <a href="${item.affiliateLink}" target="_blank" rel="noopener noreferrer" 
-                       class="vibe-button">
-                        ${item.linkText}
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                        </svg>
-                    </a>
+                    ${item.onClick ? `
+                        <button onclick="${item.onClick}()" class="vibe-button">
+                            ${item.linkText}
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </button>
+                    ` : `
+                        <a href="${item.affiliateLink}" target="_blank" rel="noopener noreferrer" 
+                           class="vibe-button">
+                            ${item.linkText}
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                        </a>
+                    `}
                 </div>
             </div>
         </div>
