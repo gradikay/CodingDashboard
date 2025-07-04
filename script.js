@@ -1180,6 +1180,7 @@ window.checkLicense = checkLicense;
 
 // Initialize security measures and license check on page load
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Security system v1.1 loaded');
     initializeSecurityMeasures();
     
     if (!validateLicense()) {
