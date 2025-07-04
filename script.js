@@ -740,10 +740,14 @@ function addInteractiveEffects() {
 
 // Initialize carousels
 function initializeCarousels() {
-    // Initialize all carousel states
+    // Initialize all carousel states and touch support
     checklistData.forEach(item => {
         if (item.hasScreenshots) {
             currentSlides[item.id] = 0;
+            // Initialize touch support for each carousel
+            setTimeout(() => {
+                initializeTouchCarousel(item.id);
+            }, 100); // Small delay to ensure DOM is ready
         }
     });
 }
@@ -957,6 +961,64 @@ function updateCarousel(itemId) {
     });
 }
 
+// Touch/swipe support for carousels
+function initializeTouchCarousel(itemId) {
+    const carousel = document.getElementById(`carousel-${itemId}`);
+    if (!carousel) return;
+    
+    let startX = 0;
+    let startY = 0;
+    let endX = 0;
+    let endY = 0;
+    let isSwipeGesture = false;
+    
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isSwipeGesture = false;
+    }, { passive: true });
+    
+    carousel.addEventListener('touchmove', (e) => {
+        if (!startX || !startY) return;
+        
+        endX = e.touches[0].clientX;
+        endY = e.touches[0].clientY;
+        
+        const diffX = Math.abs(startX - endX);
+        const diffY = Math.abs(startY - endY);
+        
+        // If horizontal swipe is more pronounced than vertical, prevent page scroll
+        if (diffX > diffY && diffX > 10) {
+            e.preventDefault();
+            isSwipeGesture = true;
+        }
+    }, { passive: false });
+    
+    carousel.addEventListener('touchend', (e) => {
+        if (!isSwipeGesture || !startX || !endX) return;
+        
+        const diffX = startX - endX;
+        const threshold = 50; // Minimum swipe distance
+        
+        if (Math.abs(diffX) > threshold) {
+            if (diffX > 0) {
+                // Swiped left - next slide
+                nextSlide(itemId);
+            } else {
+                // Swiped right - previous slide
+                previousSlide(itemId);
+            }
+        }
+        
+        // Reset values
+        startX = 0;
+        startY = 0;
+        endX = 0;
+        endY = 0;
+        isSwipeGesture = false;
+    }, { passive: true });
+}
+
 // Expose functions globally
 window.resetProgress = resetProgress;
 window.openScreenshotModal = openScreenshotModal;
@@ -964,3 +1026,4 @@ window.closeScreenshotModal = closeScreenshotModal;
 window.nextSlide = nextSlide;
 window.previousSlide = previousSlide;
 window.goToSlide = goToSlide;
+window.initializeTouchCarousel = initializeTouchCarousel;
