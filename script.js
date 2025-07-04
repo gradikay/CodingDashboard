@@ -1040,6 +1040,8 @@ function initializeTouchCarousel(itemId) {
 // Security Configuration
 const COURSE_LICENSE_KEY = 'GUMROAD2025SECURE';
 const DEV_BYPASS_KEY = 'DEV_MODE_2025';
+const MAX_ATTEMPTS = 2;
+const LOCKOUT_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
 
 // License validation system
 function validateLicense() {
@@ -1048,7 +1050,49 @@ function validateLicense() {
     return storedKey === COURSE_LICENSE_KEY || devMode === DEV_BYPASS_KEY;
 }
 
+// Rate limiting functions
+function getAttemptData() {
+    const data = localStorage.getItem('licenseAttempts');
+    if (!data) return { attempts: 0, lockedUntil: null };
+    return JSON.parse(data);
+}
+
+function saveAttemptData(attempts, lockedUntil = null) {
+    localStorage.setItem('licenseAttempts', JSON.stringify({ attempts, lockedUntil }));
+}
+
+function isLocked() {
+    const data = getAttemptData();
+    if (!data.lockedUntil) return false;
+    
+    const now = Date.now();
+    if (now >= data.lockedUntil) {
+        // Lock expired, reset attempts
+        saveAttemptData(0, null);
+        return false;
+    }
+    return true;
+}
+
+function getRemainingLockTime() {
+    const data = getAttemptData();
+    if (!data.lockedUntil) return 0;
+    return Math.max(0, data.lockedUntil - Date.now());
+}
+
+function formatTimeRemaining(ms) {
+    const minutes = Math.floor(ms / (1000 * 60));
+    const seconds = Math.floor((ms % (1000 * 60)) / 1000);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
 function showLicenseModal() {
+    // Check if locked
+    if (isLocked()) {
+        showLockoutModal();
+        return;
+    }
+
     // Hide all page content
     const mainContent = document.getElementById('main-content');
     if (mainContent) {
@@ -1059,6 +1103,10 @@ function showLicenseModal() {
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
     
+    // Get current attempt data
+    const attemptData = getAttemptData();
+    const remainingAttempts = MAX_ATTEMPTS - attemptData.attempts;
+    
     const modal = document.createElement('div');
     modal.id = 'license-modal';
     modal.className = 'fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50';
@@ -1067,7 +1115,9 @@ function showLicenseModal() {
         <div class="bg-white dark:bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4">
             <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">License Required</h2>
             <p class="text-gray-600 dark:text-gray-300 mb-6">Please enter your license key to access the course content.</p>
-            <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">Developer? Use: DEV_MODE_2025</p>
+            <div class="text-orange-500 text-sm mb-4">
+                ${remainingAttempts > 0 ? `${remainingAttempts} attempt${remainingAttempts === 1 ? '' : 's'} remaining` : ''}
+            </div>
             <input type="text" id="licenseInput" placeholder="Enter license key" 
                    class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg mb-4 
                           bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -1100,15 +1150,104 @@ function checkLicense() {
     
     if (input.value.trim() === COURSE_LICENSE_KEY) {
         localStorage.setItem('courseLicenseKey', input.value.trim());
+        // Reset attempts on successful license
+        saveAttemptData(0, null);
         activateApp();
     } else if (input.value.trim() === DEV_BYPASS_KEY) {
         localStorage.setItem('devBypass', input.value.trim());
+        // Reset attempts on successful dev bypass
+        saveAttemptData(0, null);
         activateApp();
     } else {
-        error.classList.remove('hidden');
-        input.value = '';
-        input.focus();
+        // Track failed attempt
+        const attemptData = getAttemptData();
+        const newAttempts = attemptData.attempts + 1;
+        
+        if (newAttempts >= MAX_ATTEMPTS) {
+            // Lock for 1 hour
+            const lockUntil = Date.now() + LOCKOUT_DURATION;
+            saveAttemptData(newAttempts, lockUntil);
+            showLockoutModal();
+        } else {
+            // Still have attempts left
+            saveAttemptData(newAttempts, null);
+            error.classList.remove('hidden');
+            input.value = '';
+            input.focus();
+            
+            // Update attempts counter
+            const remainingAttempts = MAX_ATTEMPTS - newAttempts;
+            const attemptCounter = document.querySelector('.text-orange-500');
+            if (attemptCounter) {
+                attemptCounter.innerHTML = `${remainingAttempts} attempt${remainingAttempts === 1 ? '' : 's'} remaining`;
+            }
+        }
     }
+}
+
+function showLockoutModal() {
+    // Remove any existing modal
+    const existingModal = document.getElementById('license-modal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    // Hide all page content
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+        mainContent.style.display = 'none';
+    }
+    
+    // Disable scrolling
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    
+    const modal = document.createElement('div');
+    modal.id = 'license-modal';
+    modal.className = 'fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50';
+    modal.style.pointerEvents = 'all';
+    
+    const remainingTime = getRemainingLockTime();
+    const timeDisplay = formatTimeRemaining(remainingTime);
+    
+    modal.innerHTML = `
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4 text-center">
+            <h2 class="text-2xl font-bold mb-4 text-red-600 dark:text-red-400">Access Blocked</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">Too many incorrect attempts. Please wait before trying again.</p>
+            <div class="text-3xl font-mono text-orange-500 mb-6" id="countdown-timer">${timeDisplay}</div>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">Time remaining until next attempt</p>
+            <div class="mt-6">
+                <button onclick="window.location.href='https://gumroad.com'" 
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors">
+                    Purchase License
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Update countdown every second
+    const countdown = setInterval(() => {
+        const remaining = getRemainingLockTime();
+        if (remaining <= 0) {
+            clearInterval(countdown);
+            // Remove modal and show license modal again
+            modal.remove();
+            showLicenseModal();
+        } else {
+            const timer = document.getElementById('countdown-timer');
+            if (timer) {
+                timer.textContent = formatTimeRemaining(remaining);
+            }
+        }
+    }, 1000);
+    
+    // Block all interaction with the background
+    modal.addEventListener('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    });
 }
 
 function activateApp() {

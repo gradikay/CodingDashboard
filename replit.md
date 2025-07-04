@@ -45,13 +45,15 @@ This is a front-end web application for a coding course dashboard that guides us
 
 ### 4. Security and Anti-Piracy System
 - **License Key Validation**: Users must enter a valid license key from the .env file to access course content
+- **Rate Limiting System**: Users are limited to 2 incorrect attempts before being locked out for 1 hour
+- **Lockout Timer**: Real-time countdown display showing remaining time until next attempt is allowed
 - **Anti-Screenshot Protection**: Disabled F12, developer tools, print screen, and context menu functionality
 - **Anti-Copy Protection**: Disabled text selection, image dragging, and keyboard shortcuts (Ctrl+C, Ctrl+V, Ctrl+A)
-- **Developer Tools Detection**: Automatically blocks access when developer tools are detected
 - **Image Download Prevention**: Disabled right-click on images and drag-and-drop functionality
 - **Console Monitoring**: Periodic console clearing with warning messages about unauthorized access
-- **Local Storage Persistence**: License keys are stored in localStorage for seamless user experience
+- **Local Storage Persistence**: License keys and attempt tracking stored in localStorage
 - **Visual Blocking**: Modal overlay prevents access until valid license key is entered
+- **Developer Bypass**: Hidden DEV_MODE_2025 key for development access (not shown in UI)
 
 ### 2. Visual Design Elements
 - **Animated Background**: Floating orb elements with CSS animations
