@@ -1180,25 +1180,7 @@ function initializeSecurityMeasures() {
         console.log('%cThis is a browser feature intended for developers. Unauthorized access is prohibited.', 'color: red; font-size: 16px;');
     }, 1000);
 
-    // Detect developer tools (only if not in dev mode)
-    let devtools = {
-        open: false,
-        orientation: null
-    };
-
-    setInterval(function() {
-        const devMode = localStorage.getItem('devBypass');
-        if (devMode === DEV_BYPASS_KEY) return; // Skip detection in dev mode
-        
-        if (window.outerHeight - window.innerHeight > 160 || window.outerWidth - window.innerWidth > 160) {
-            if (!devtools.open) {
-                devtools.open = true;
-                document.body.innerHTML = '<div class="fixed inset-0 bg-black flex items-center justify-center"><div class="text-white text-center"><h1 class="text-4xl mb-4">Access Denied</h1><p>Developer tools detected. Please close them to continue.</p></div></div>';
-            }
-        } else {
-            devtools.open = false;
-        }
-    }, 500);
+    // Developer tools detection disabled for better user experience
 
     // Prevent image downloads
     document.addEventListener('contextmenu', function(e) {
