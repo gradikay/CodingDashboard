@@ -194,17 +194,72 @@
     </div>
 
     <!-- Footer -->
-    <footer class="text-center py-8 border-t border-border-light">
-        <div class="space-y-2">
-            <p class="text-text-primary font-semibold">
-                ✨ Created by Gradi Kayamaba ✨
-            </p>
-            <p class="text-text-secondary text-sm">
-                Built with the magic of GitHub + Replit + GoDaddy
-            </p>
-            <p class="text-text-muted text-xs">
-                Crafted using the very tools taught in this course
-            </p>
+    <footer class="relative bg-gradient-to-r from-accent-dark to-card-bg border-t-2 border-primary-gold py-12 mt-16 overflow-hidden">
+        <!-- Floating magical elements for dark theme -->
+        <div class="absolute inset-0 hidden dark-theme-only">
+            <div class="floating-orb" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="floating-orb" style="left: 70%; animation-delay: 2s;"></div>
+            <div class="floating-orb" style="left: 40%; animation-delay: 4s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center space-y-6">
+                <!-- Main Creator Credit -->
+                <div class="space-y-2">
+                    <h3 class="text-2xl md:text-3xl font-bold magical-text bg-gradient-to-r from-primary-gold to-primary-emerald bg-clip-text text-transparent">
+                        Crafted with Magic by Gradi Kayamaba
+                    </h3>
+                    <div class="w-24 h-1 bg-gradient-to-r from-primary-gold to-primary-emerald mx-auto rounded-full"></div>
+                </div>
+                
+                <!-- Tools Showcase -->
+                <div class="space-y-4">
+                    <p class="text-lg text-text-secondary font-semibold">
+                        Built using the exact tools you'll master in this course
+                    </p>
+                    
+                    <!-- Tool Icons Row -->
+                    <div class="flex justify-center items-center space-x-8 flex-wrap gap-4">
+                        <div class="flex items-center space-x-2 bg-card-bg-light px-4 py-2 rounded-lg border border-border-mystical hover:border-primary-gold transition-all duration-300">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-gray-300">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                            <span class="text-text-primary font-medium">GitHub</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2 bg-card-bg-light px-4 py-2 rounded-lg border border-border-mystical hover:border-primary-gold transition-all duration-300">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-orange-400">
+                                <path d="M7.5 7.5h9v9h-9v-9zm1.5 1.5v6h6v-6h-6zm-2.5-3.5h12v12h-12v-12zm1.5 1.5v9h9v-9h-9z"/>
+                            </svg>
+                            <span class="text-text-primary font-medium">Replit</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2 bg-card-bg-light px-4 py-2 rounded-lg border border-border-mystical hover:border-primary-gold transition-all duration-300">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-green-400">
+                                <path d="M12 2l9 7v11h-6v-7h-6v7h-6v-11l9-7z"/>
+                            </svg>
+                            <span class="text-text-primary font-medium">GoDaddy</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Meta Message -->
+                <div class="space-y-2">
+                    <p class="text-text-mystical italic">
+                        "Practice what you teach, teach what you practice"
+                    </p>
+                    <p class="text-text-muted text-sm">
+                        This dashboard demonstrates the power of the complete web development stack
+                    </p>
+                </div>
+                
+                <!-- Copyright -->
+                <div class="pt-6 border-t border-border-mystical">
+                    <p class="text-text-muted text-sm">
+                        © 2025 Gradi Kayamaba • Empowering the next generation of web developers
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 

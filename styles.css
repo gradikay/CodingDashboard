@@ -526,6 +526,68 @@ a[class*="vibe-button"],
     color: var(--text-muted) !important;
 }
 
+/* Impressive Footer Styling */
+footer {
+    background: linear-gradient(135deg, var(--accent-dark), var(--card-bg), var(--accent-mystical)) !important;
+    box-shadow: 0 -10px 30px rgba(255, 215, 0, 0.1);
+}
+
+[data-theme="light"] footer {
+    background: linear-gradient(135deg, var(--card-bg), var(--bg-secondary), var(--accent-light)) !important;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05);
+}
+
+footer .magical-text {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    animation: magicalGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes magicalGlow {
+    from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+    to { text-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 40px rgba(80, 200, 120, 0.3); }
+}
+
+footer .floating-orb {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.2), rgba(80, 200, 120, 0.1));
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: floatMagical 6s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatMagical {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-30px) rotate(120deg); }
+    66% { transform: translateY(-15px) rotate(240deg); }
+}
+
+/* Tool showcase cards */
+footer .flex.items-center {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+footer .flex.items-center:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+}
+
+[data-theme="light"] footer .flex.items-center:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme visibility for floating elements */
+.dark-theme-only {
+    display: block !important;
+}
+
+[data-theme="light"] .dark-theme-only {
+    display: none !important;
+}
+
 /* Fix step indicator icons - ensure checkmarks are visible */
 .step-check {
     color: #FFFFFF !important;
