@@ -1037,6 +1037,137 @@ function initializeTouchCarousel(itemId) {
     }, { passive: true });
 }
 
+// Security Configuration
+const COURSE_LICENSE_KEY = 'GUMROAD2025SECURE';
+
+// License validation system
+function validateLicense() {
+    const storedKey = localStorage.getItem('courseLicenseKey');
+    return storedKey === COURSE_LICENSE_KEY;
+}
+
+function showLicenseModal() {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+    modal.innerHTML = `
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">License Required</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">Please enter your license key to access the course content.</p>
+            <input type="text" id="licenseInput" placeholder="Enter license key" 
+                   class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg mb-4 
+                          bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <div class="flex gap-3">
+                <button onclick="checkLicense()" 
+                        class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
+                    Activate
+                </button>
+                <button onclick="window.location.href='https://gumroad.com'" 
+                        class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-lg transition-colors">
+                    Purchase
+                </button>
+            </div>
+            <div id="licenseError" class="text-red-500 text-sm mt-2 hidden">Invalid license key. Please try again.</div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    document.getElementById('licenseInput').focus();
+}
+
+function checkLicense() {
+    const input = document.getElementById('licenseInput');
+    const error = document.getElementById('licenseError');
+    
+    if (input.value.trim() === COURSE_LICENSE_KEY) {
+        localStorage.setItem('courseLicenseKey', input.value.trim());
+        document.querySelector('.fixed.inset-0').remove();
+        init();
+    } else {
+        error.classList.remove('hidden');
+        input.value = '';
+        input.focus();
+    }
+}
+
+// Anti-screenshot and anti-copy protection
+function initializeSecurityMeasures() {
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // Disable key combinations
+    document.addEventListener('keydown', function(e) {
+        // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S, Ctrl+A, Ctrl+C, Ctrl+V, Print Screen
+        if (e.keyCode === 123 || // F12
+            (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
+            (e.ctrlKey && e.keyCode === 85) || // Ctrl+U
+            (e.ctrlKey && e.keyCode === 83) || // Ctrl+S
+            (e.ctrlKey && e.keyCode === 65) || // Ctrl+A
+            (e.ctrlKey && e.keyCode === 67) || // Ctrl+C
+            (e.ctrlKey && e.keyCode === 86) || // Ctrl+V
+            e.keyCode === 44) { // Print Screen
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Disable text selection
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+    });
+
+    // Disable drag and drop
+    document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+    });
+
+    // Disable image saving
+    document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+
+    // Clear console periodically
+    setInterval(function() {
+        console.clear();
+        console.log('%cSTOP!', 'color: red; font-size: 50px; font-weight: bold;');
+        console.log('%cThis is a browser feature intended for developers. Unauthorized access is prohibited.', 'color: red; font-size: 16px;');
+    }, 1000);
+
+    // Detect developer tools
+    let devtools = {
+        open: false,
+        orientation: null
+    };
+
+    setInterval(function() {
+        if (window.outerHeight - window.innerHeight > 160 || window.outerWidth - window.innerWidth > 160) {
+            if (!devtools.open) {
+                devtools.open = true;
+                document.body.innerHTML = '<div class="fixed inset-0 bg-black flex items-center justify-center"><div class="text-white text-center"><h1 class="text-4xl mb-4">Access Denied</h1><p>Developer tools detected. Please close them to continue.</p></div></div>';
+            }
+        } else {
+            devtools.open = false;
+        }
+    }, 500);
+
+    // Prevent image downloads
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+
+    // Disable screenshot notifications
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            console.log('%cScreenshot attempt detected!', 'color: red; font-size: 20px;');
+        }
+    });
+}
+
 // Expose functions globally
 window.resetProgress = resetProgress;
 window.openScreenshotModal = openScreenshotModal;
@@ -1045,3 +1176,15 @@ window.nextSlide = nextSlide;
 window.previousSlide = previousSlide;
 window.goToSlide = goToSlide;
 window.initializeTouchCarousel = initializeTouchCarousel;
+window.checkLicense = checkLicense;
+
+// Initialize security measures and license check on page load
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSecurityMeasures();
+    
+    if (!validateLicense()) {
+        showLicenseModal();
+    } else {
+        init();
+    }
+});

@@ -43,6 +43,16 @@ This is a front-end web application for a coding course dashboard that guides us
 - **Persistence**: User theme preference saved to localStorage
 - **Adaptive Elements**: Floating magical elements hidden in light mode for clean appearance
 
+### 4. Security and Anti-Piracy System
+- **License Key Validation**: Users must enter a valid license key from the .env file to access course content
+- **Anti-Screenshot Protection**: Disabled F12, developer tools, print screen, and context menu functionality
+- **Anti-Copy Protection**: Disabled text selection, image dragging, and keyboard shortcuts (Ctrl+C, Ctrl+V, Ctrl+A)
+- **Developer Tools Detection**: Automatically blocks access when developer tools are detected
+- **Image Download Prevention**: Disabled right-click on images and drag-and-drop functionality
+- **Console Monitoring**: Periodic console clearing with warning messages about unauthorized access
+- **Local Storage Persistence**: License keys are stored in localStorage for seamless user experience
+- **Visual Blocking**: Modal overlay prevents access until valid license key is entered
+
 ### 2. Visual Design Elements
 - **Animated Background**: Floating orb elements with CSS animations
 - **Gradient Effects**: Background gradients and text effects for visual appeal
@@ -99,6 +109,7 @@ The application guides users through 5 key steps:
 
 ## Changelog
 
+- July 04, 2025. Implemented comprehensive security system with license key validation, anti-screenshot protection, and anti-copy measures for Gumroad sales protection
 - July 04, 2025. Implemented comprehensive mobile-first responsive design with optimized touch interactions and progressive enhancement for tablet/desktop
 - July 04, 2025. Added dual-theme system with dark magical mode and clean light mode, including theme toggle button and localStorage persistence
 - July 04, 2025. Transformed to magical Harry Potter-inspired theme with floating mystical elements, improved tab contrast, and added clear progress button

@@ -1271,6 +1271,47 @@ footer .flex.items-center:hover {
     }
 }
 
+/* Anti-copy protection styles */
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent image dragging and selection */
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+}
+
+/* Re-enable pointer events for clickable images */
+.screenshot-image {
+    pointer-events: auto;
+}
+
+/* Prevent text selection on sensitive content */
+.checklist-content {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Allow text selection for input fields */
+input, textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
 /* Tablet responsiveness */
 @media (min-width: 769px) and (max-width: 1024px) {
     .container {
