@@ -630,54 +630,64 @@ function renderChecklist() {
                     ${item.hasScreenshots ? `
                         <div class="mb-6">
                             <h4 class="text-lg font-semibold text-primary-blue mb-4">Step-by-Step Guide:</h4>
-                            <div class="carousel-container relative">
-                                <div class="carousel-track flex transition-transform duration-300 ease-in-out" id="carousel-${item.id}">
-                                    ${item.screenshots.map((screenshot, index) => `
-                                        <div class="carousel-slide min-w-full">
-                                            <div class="bg-card-bg rounded-lg p-4 border border-border-light">
-                                                <div class="flex flex-col gap-4">
+                            <div class="carousel-container">
+                                <!-- Image Display Area -->
+                                <div class="carousel-image-container overflow-hidden rounded-lg border border-border-light mb-4">
+                                    <div class="carousel-track flex transition-transform duration-300 ease-in-out" id="carousel-${item.id}">
+                                        ${item.screenshots.map((screenshot, index) => `
+                                            <div class="carousel-slide min-w-full">
+                                                <div class="bg-card-bg p-4">
                                                     <div class="text-center">
                                                         <img src="${screenshot.image}" alt="${screenshot.title}" 
                                                              class="w-full max-w-2xl mx-auto rounded-lg border border-border-light hover:border-primary-blue transition-all duration-300 cursor-pointer screenshot-image"
                                                              onclick="openScreenshotModal('${screenshot.image}', '${screenshot.title}')">
                                                     </div>
-                                                    <div class="text-center">
-                                                        <h5 class="font-semibold text-text-primary mb-2">${screenshot.title}</h5>
-                                                        <p class="text-sm text-text-secondary">${screenshot.description}</p>
-                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    `).join('')}
+                                        `).join('')}
+                                    </div>
                                 </div>
                                 
-                                <!-- Navigation buttons -->
-                                <button class="carousel-btn carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2" onclick="previousSlide(${item.id})">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                                    </svg>
-                                </button>
-                                <button class="carousel-btn carousel-next absolute right-2 top-1/2 transform -translate-y-1/2" onclick="nextSlide(${item.id})">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </button>
-                                
-                                <!-- Step navigation -->
-                                <div class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                                    ${item.screenshots.map((screenshot, index) => `
-                                        <button class="step-nav-btn text-center p-3 rounded-lg border transition-all duration-300 ${index === 0 ? 'active' : ''}" onclick="goToSlide(${item.id}, ${index})">
-                                            <div class="flex flex-col items-center space-y-2">
-                                                <div class="flex-shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center step-indicator ${index === 0 ? 'border-primary-blue bg-primary-blue text-white' : 'border-text-secondary'}">
-                                                    <span class="text-sm font-bold step-number">${index + 1}</span>
-                                                    <svg class="w-5 h-5 text-primary-green hidden step-check" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                                    </svg>
-                                                </div>
-                                                <span class="text-xs font-medium text-text-secondary step-title text-center leading-tight">${screenshot.title.replace(/^Step \d+: /, '')}</span>
-                                            </div>
+                                <!-- Navigation Controls Section -->
+                                <div class="carousel-controls bg-card-bg-light rounded-lg border border-border-light p-4">
+                                    <!-- Main Navigation with Title -->
+                                    <div class="flex justify-between items-center mb-4">
+                                        <button class="carousel-nav-btn carousel-prev flex items-center gap-2" onclick="previousSlide(${item.id})">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                            </svg>
+                                            <span class="hidden sm:inline">Previous</span>
                                         </button>
-                                    `).join('')}
+                                        
+                                        <div class="text-center flex-1 mx-4">
+                                            <h5 class="font-semibold text-text-primary carousel-title" id="carousel-title-${item.id}">${item.screenshots[0].title}</h5>
+                                            <p class="text-sm text-text-secondary carousel-description" id="carousel-description-${item.id}">${item.screenshots[0].description}</p>
+                                        </div>
+                                        
+                                        <button class="carousel-nav-btn carousel-next flex items-center gap-2" onclick="nextSlide(${item.id})">
+                                            <span class="hidden sm:inline">Next</span>
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Step Navigation Grid -->
+                                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                                        ${item.screenshots.map((screenshot, index) => `
+                                            <button class="step-nav-btn text-center p-3 rounded-lg border transition-all duration-300 ${index === 0 ? 'active' : ''}" onclick="goToSlide(${item.id}, ${index})">
+                                                <div class="flex flex-col items-center space-y-2">
+                                                    <div class="flex-shrink-0 w-8 h-8 rounded-full border-2 flex items-center justify-center step-indicator ${index === 0 ? 'border-primary-blue bg-primary-blue text-white' : 'border-text-secondary'}">
+                                                        <span class="text-sm font-bold step-number">${index + 1}</span>
+                                                        <svg class="w-5 h-5 text-primary-green hidden step-check" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <span class="text-xs font-medium text-text-secondary step-title text-center leading-tight">${screenshot.title.replace(/^Step \d+: /, '')}</span>
+                                                </div>
+                                            </button>
+                                        `).join('')}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -922,7 +932,9 @@ function goToSlide(itemId, slideIndex) {
 
 function updateCarousel(itemId) {
     const carousel = document.getElementById(`carousel-${itemId}`);
-    const stepButtons = carousel.parentElement.querySelectorAll('.step-nav-btn');
+    const stepButtons = carousel.parentElement.parentElement.querySelectorAll('.step-nav-btn');
+    const titleElement = document.getElementById(`carousel-title-${itemId}`);
+    const descriptionElement = document.getElementById(`carousel-description-${itemId}`);
     
     if (!carousel) return;
     
@@ -930,6 +942,14 @@ function updateCarousel(itemId) {
     const translateX = -currentSlide * 100;
     
     carousel.style.transform = `translateX(${translateX}%)`;
+    
+    // Update title and description
+    const item = checklistData.find(data => data.id === itemId);
+    if (item && item.screenshots[currentSlide]) {
+        const currentScreenshot = item.screenshots[currentSlide];
+        if (titleElement) titleElement.textContent = currentScreenshot.title;
+        if (descriptionElement) descriptionElement.textContent = currentScreenshot.description;
+    }
     
     // Update step navigation buttons
     stepButtons.forEach((button, index) => {
