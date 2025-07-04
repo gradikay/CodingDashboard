@@ -255,7 +255,7 @@ const checklistData = [
             },
             {
                 title: "Step 4: Access Settings",
-                description: "Click on the 'Settings' tab at the top of the repository to access configuration options",
+                description: "Click on the 'Settings' tab at the top of the repository to access configuration options. You'll need to find the Pages section next to set up GitHub Pages for your website.",
                 image: "attached_assets/github-8-settings_1751585153119.png"
             },
             {
