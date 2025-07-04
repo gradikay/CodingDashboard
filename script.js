@@ -343,9 +343,7 @@ const checklistData = [
     {
         id: 5,
         title: "Celebrate! 🎉",
-        description: "Congratulations! You've successfully created and deployed your first website. Your site is now live on the internet for everyone to see! <strong>Ready to build more projects?</strong> You can mark this complete and start your next web development adventure!",
-        affiliateLink: "https://developer.mozilla.org/en-US/docs/Learn",
-        linkText: "Continue learning web development →"
+        description: "Congratulations! You've successfully created and deployed your first website. Your site is now live on the internet for everyone to see! <strong>Ready to build more projects?</strong> You can mark this complete and start your next web development adventure!"
     }
 ];
 
