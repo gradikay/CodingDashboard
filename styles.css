@@ -238,8 +238,8 @@ body {
 
 /* Mobile-optimized carousel buttons */
 .carousel-btn {
-    background: var(--card-bg);
-    border: 2px solid var(--border-mystical);
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -248,12 +248,13 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: all 0.4s ease;
-    z-index: 10;
-    color: var(--text-primary);
+    z-index: 20;
+    color: white;
     font-weight: bold;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    backdrop-filter: blur(10px);
 }
 
 /* Mobile positioning adjustments */
@@ -261,7 +262,8 @@ body {
     .carousel-btn {
         width: 32px;
         height: 32px;
-        top: 20px; /* Position near top */
+        top: 50%; /* Center vertically over image */
+        transform: translateY(-50%);
     }
     
     .carousel-prev {
@@ -301,7 +303,8 @@ body {
     .carousel-btn {
         width: 44px;
         height: 44px;
-        top: 20px; /* Position near top */
+        top: 50%; /* Center vertically over image */
+        transform: translateY(-50%);
     }
     
     .carousel-prev {
@@ -323,11 +326,11 @@ body {
 }
 
 .carousel-btn:hover {
-    background: linear-gradient(135deg, var(--primary-gold), var(--primary-bronze));
-    border-color: var(--primary-gold);
-    color: var(--bg-dark);
-    box-shadow: var(--glow-gold);
-    transform: scale(1.1);
+    background: rgba(255, 215, 0, 0.9);
+    border-color: rgba(255, 215, 0, 0.8);
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    transform: translateY(-50%) scale(1.1);
 }
 
 /* Magical step navigation styling with HIGH CONTRAST */
