@@ -1,81 +1,110 @@
-/* Clean, Classic Theme Styles */
+/* Harry Potter Magical Theme Styles */
 
 :root {
-    --primary-blue: #2563EB;
-    --primary-green: #059669;
-    --primary-gray: #374151;
-    --bg-light: #FFFFFF;
-    --bg-secondary: #F8FAFC;
-    --card-bg: #FFFFFF;
-    --text-primary: #1F2937;
-    --text-secondary: #6B7280;
-    --border-light: #E5E7EB;
-    --accent-light: #F3F4F6;
+    --primary-gold: #D4AF37;
+    --primary-burgundy: #8B0000;
+    --primary-emerald: #50C878;
+    --primary-sapphire: #0F52BA;
+    --primary-bronze: #CD7F32;
+    --accent-dark: #2D1B69;
+    --accent-mystical: #4B0082;
+    --bg-dark: #0F0F23;
+    --bg-secondary: #1A1A2E;
+    --card-bg: #16213E;
+    --card-bg-light: #1E2A5E;
+    --text-primary: #F5F5DC;
+    --text-secondary: #D4AF37;
+    --text-mystical: #E6E6FA;
+    --border-mystical: #483D8B;
+    --accent-light: #2D1B69;
+    --shadow-mystical: 0 4px 20px rgba(212, 175, 55, 0.3);
+    --glow-gold: 0 0 20px rgba(212, 175, 55, 0.5);
+    --glow-emerald: 0 0 15px rgba(80, 200, 120, 0.4);
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-secondary);
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-secondary) 50%, var(--card-bg) 100%);
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.6;
+    min-height: 100vh;
 }
 
-/* Clean header styles */
+/* Magical header styles */
 .header-section {
-    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-secondary) 100%);
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-secondary) 50%, var(--accent-dark) 100%);
+    box-shadow: var(--shadow-mystical);
+    border-bottom: 2px solid var(--border-mystical);
 }
 
-/* Simple card styling */
+.header-section h1 {
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-bronze));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+}
+
+.header-section p {
+    color: var(--text-mystical);
+}
+
+/* Magical card styling */
 .checklist-item {
     background: var(--card-bg);
-    border: 1px solid var(--border-light);
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    transition: all 0.3s ease;
+    border: 2px solid var(--border-mystical);
+    border-radius: 16px;
+    box-shadow: var(--shadow-mystical);
+    transition: all 0.4s ease;
     overflow: hidden;
+    position: relative;
 }
 
 .checklist-item:hover {
-    border-color: var(--primary-blue);
-    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1);
-    transform: translateY(-2px);
+    border-color: var(--primary-gold);
+    box-shadow: var(--glow-gold);
+    transform: translateY(-4px);
 }
 
 .checklist-item.completed {
-    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
-    border-color: var(--primary-green);
+    background: linear-gradient(135deg, var(--card-bg-light) 0%, var(--accent-dark) 100%);
+    border-color: var(--primary-emerald);
+    box-shadow: var(--glow-emerald);
 }
 
 .checklist-item.completed .step-number {
-    background: var(--primary-green);
+    background: var(--primary-emerald);
     color: white;
 }
 
-/* Clean step number styling */
+/* Magical step number styling */
 .step-number {
-    background: var(--accent-light);
-    border: 1px solid var(--border-light);
-    color: var(--text-primary);
-    font-weight: 600;
-    transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-bronze));
+    border: 2px solid var(--border-mystical);
+    color: var(--bg-dark);
+    font-weight: 700;
+    transition: all 0.4s ease;
+    box-shadow: var(--shadow-mystical);
 }
 
-/* Simple checkbox styling */
+/* Magical checkbox styling */
 .custom-checkbox {
     appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--border-light);
-    border-radius: 4px;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--border-mystical);
+    border-radius: 6px;
     background: var(--card-bg);
     position: relative;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .custom-checkbox:checked {
-    background: var(--primary-blue);
-    border-color: var(--primary-blue);
+    background: linear-gradient(135deg, var(--primary-emerald), var(--primary-sapphire));
+    border-color: var(--primary-emerald);
+    box-shadow: var(--glow-emerald);
 }
 
 .custom-checkbox:checked::after {
@@ -102,15 +131,23 @@ body {
     opacity: 1;
 }
 
-/* Clean button styling */
+/* Magical button styling */
 .vibe-button {
-    background: var(--primary-blue);
-    border: none;
-    color: white;
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-bronze));
+    border: 2px solid var(--border-mystical);
+    color: var(--bg-dark);
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: all 0.4s ease;
+    box-shadow: var(--shadow-mystical);
+}
+
+.vibe-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-gold);
+    background: linear-gradient(135deg, var(--primary-bronze), var(--primary-gold));
+}
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -151,42 +188,52 @@ body {
 
 .carousel-btn {
     background: var(--card-bg);
-    border: 1px solid var(--border-light);
+    border: 2px solid var(--border-mystical);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     z-index: 10;
+    color: var(--text-primary);
+    font-weight: bold;
 }
 
 .carousel-btn:hover {
-    background: var(--primary-blue);
-    border-color: var(--primary-blue);
-    color: white;
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-bronze));
+    border-color: var(--primary-gold);
+    color: var(--bg-dark);
+    box-shadow: var(--glow-gold);
+    transform: scale(1.1);
 }
 
-/* Step navigation styling */
+/* Magical step navigation styling */
 .step-nav-btn {
     background: var(--card-bg);
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
+    border: 2px solid var(--border-mystical);
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .step-nav-btn:hover {
-    background: var(--accent-light);
-    border-color: var(--primary-blue);
+    background: var(--card-bg-light);
+    border-color: var(--primary-gold);
+    box-shadow: var(--glow-gold);
+    transform: translateY(-2px);
 }
 
 .step-nav-btn.active {
-    background: var(--primary-blue);
-    border-color: var(--primary-blue);
-    color: white;
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-bronze));
+    border-color: var(--primary-gold);
+    color: var(--bg-dark);
+    box-shadow: var(--glow-gold);
+    font-weight: 700;
 }
 
 .step-indicator {
@@ -293,17 +340,50 @@ html {
     }
 }
 
-/* Remove floating orbs and glow effects - keeping it clean and simple */
-.floating-orb {
-    display: none;
+/* Magical card effects */
+.magical-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.magical-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.magical-card:hover::before {
+    left: 100%;
 }
 
 .glow-card {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-mystical);
 }
 
 .glow-card:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--glow-gold);
+}
+
+.magical-text {
+    background: linear-gradient(135deg, var(--primary-gold), var(--text-mystical));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.magical-progress-bg {
+    background: linear-gradient(135deg, var(--accent-dark), var(--card-bg-light));
+    border: 1px solid var(--border-mystical);
+}
+
+.magical-progress-bar {
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-emerald), var(--primary-sapphire));
+    box-shadow: var(--glow-gold);
 }
 
 /* Achievement system styles */
@@ -396,6 +476,79 @@ html {
     position: fixed;
     width: 10px;
     height: 10px;
-    background: var(--primary-blue);
+    background: var(--primary-gold);
     animation: confetti 3s linear infinite;
+}
+
+/* Magical sparkle effects */
+.magical-sparkle {
+    position: relative;
+}
+
+.magical-sparkle::after {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 16px;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Magical floating elements */
+.floating-magical-element {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.floating-star {
+    color: var(--primary-gold);
+    font-size: 20px;
+    animation: float-star 8s ease-in-out infinite;
+}
+
+@keyframes float-star {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.floating-moon {
+    color: var(--text-mystical);
+    font-size: 24px;
+    animation: float-moon 10s ease-in-out infinite;
+}
+
+@keyframes float-moon {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(360deg); }
+}
+
+/* Better text contrast */
+.text-primary {
+    color: var(--text-primary) !important;
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+/* Magical button variants */
+.btn-magical-primary {
+    background: linear-gradient(135deg, var(--primary-gold), var(--primary-bronze));
+    color: var(--bg-dark);
+    border: 2px solid var(--primary-gold);
+    box-shadow: var(--glow-gold);
+}
+
+.btn-magical-secondary {
+    background: linear-gradient(135deg, var(--primary-emerald), var(--primary-sapphire));
+    color: white;
+    border: 2px solid var(--primary-emerald);
+    box-shadow: var(--glow-emerald);
 }
