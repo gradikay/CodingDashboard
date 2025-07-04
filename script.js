@@ -211,9 +211,9 @@ const checklistData = [
                 image: "attached_assets/github-12-select-root_1751585153120.png"
             },
             {
-                title: "Step 9: Save Configuration",
-                description: "Verify that branch is set to 'main' and folder is set to '/ (root)', then click 'Save' to enable GitHub Pages",
-                image: "attached_assets/github-13-branch-all-set_1751585153120.png"
+                title: "Step 9: Save Configuration & Note Your Domain",
+                description: "Verify that branch is set to 'main' and folder is set to '/ (root)', then click 'Save' to enable GitHub Pages. Remember your default GitHub domain shown in the custom domain section - it will be something like 'yourusername.github.io' - you'll need this for the next steps!",
+                image: "attached_assets/github-13-branch-all-set_1751590509147.png"
             }
         ]
     },
