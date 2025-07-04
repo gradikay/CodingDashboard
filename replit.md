@@ -26,6 +26,14 @@ This is a front-end web application for a coding course dashboard that guides us
 - **Progress Tracking**: Visual indicators for completed items
 - **Affiliate Integration**: External links for course resources and tools
 
+### 2. Achievement Badges and Rewards System
+- **Badge Collection**: 8 different achievements with varying rarity levels (common, uncommon, rare, legendary)
+- **Real-time Notifications**: Animated popup notifications when achievements are unlocked
+- **Visual Display**: Interactive badge grid with tooltips showing achievement details
+- **Special Effects**: Confetti animation for legendary achievements
+- **Session Tracking**: Advanced tracking for speed runs and perfect completion runs
+- **Persistence**: Achievement progress saved to local storage
+
 ### 2. Visual Design Elements
 - **Animated Background**: Floating orb elements with CSS animations
 - **Gradient Effects**: Background gradients and text effects for visual appeal

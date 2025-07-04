@@ -1,4 +1,72 @@
-// Vibe Coding Dashboard JavaScript
+// Web Development Course Dashboard JavaScript
+
+// Achievement system data
+const achievements = [
+    {
+        id: 'first_step',
+        title: 'Getting Started',
+        description: 'Complete your first step',
+        icon: '🌟',
+        condition: (progress) => Object.values(progress).filter(Boolean).length >= 1,
+        rarity: 'common'
+    },
+    {
+        id: 'github_master',
+        title: 'GitHub Master',
+        description: 'Complete GitHub account setup',
+        icon: '🐙',
+        condition: (progress) => progress[1] === true,
+        rarity: 'common'
+    },
+    {
+        id: 'integration_expert',
+        title: 'Integration Expert',
+        description: 'Connect GitHub to Replit successfully',
+        icon: '🔗',
+        condition: (progress) => progress[2] === true,
+        rarity: 'uncommon'
+    },
+    {
+        id: 'deployment_pro',
+        title: 'Deployment Pro',
+        description: 'Set up GitHub Pages deployment',
+        icon: '🚀',
+        condition: (progress) => progress[3] === true,
+        rarity: 'uncommon'
+    },
+    {
+        id: 'domain_wizard',
+        title: 'Domain Wizard',
+        description: 'Successfully connect custom domain',
+        icon: '🧙‍♂️',
+        condition: (progress) => progress[4] === true,
+        rarity: 'rare'
+    },
+    {
+        id: 'course_champion',
+        title: 'Course Champion',
+        description: 'Complete the entire course',
+        icon: '🏆',
+        condition: (progress) => Object.values(progress).filter(Boolean).length === 5,
+        rarity: 'legendary'
+    },
+    {
+        id: 'speed_runner',
+        title: 'Speed Runner',
+        description: 'Complete 3 steps in one session',
+        icon: '⚡',
+        condition: (progress, sessionProgress) => sessionProgress >= 3,
+        rarity: 'rare'
+    },
+    {
+        id: 'perfectionist',
+        title: 'Perfectionist',
+        description: 'Complete all steps without unchecking any',
+        icon: '💎',
+        condition: (progress, sessionProgress, perfectRun) => perfectRun && Object.values(progress).filter(Boolean).length === 5,
+        rarity: 'legendary'
+    }
+];
 
 // Checklist data
 const checklistData = [
@@ -287,6 +355,145 @@ const progressBar = document.getElementById('progress-bar');
 const progressText = document.getElementById('progress-text');
 const celebration = document.getElementById('celebration');
 
+// Achievement tracking variables
+let sessionProgress = 0;
+let perfectRun = true;
+let sessionStartTime = Date.now();
+
+// Achievement system functions
+function loadAchievements() {
+    const saved = localStorage.getItem('courseAchievements');
+    return saved ? JSON.parse(saved) : [];
+}
+
+function saveAchievements(earnedAchievements) {
+    localStorage.setItem('courseAchievements', JSON.stringify(earnedAchievements));
+}
+
+function checkAchievements() {
+    const progress = loadProgress();
+    const earnedAchievements = loadAchievements();
+    const newAchievements = [];
+    
+    achievements.forEach(achievement => {
+        if (!earnedAchievements.includes(achievement.id)) {
+            if (achievement.condition(progress, sessionProgress, perfectRun)) {
+                earnedAchievements.push(achievement.id);
+                newAchievements.push(achievement);
+            }
+        }
+    });
+    
+    if (newAchievements.length > 0) {
+        saveAchievements(earnedAchievements);
+        showAchievementNotification(newAchievements);
+        updateAchievementDisplay();
+    }
+}
+
+function showAchievementNotification(newAchievements) {
+    newAchievements.forEach((achievement, index) => {
+        setTimeout(() => {
+            const notification = document.createElement('div');
+            notification.className = 'achievement-notification fixed top-4 right-4 z-50 bg-card-bg border-2 border-primary-blue rounded-lg p-4 shadow-2xl transform translate-x-full transition-all duration-500';
+            notification.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <div class="text-3xl achievement-icon">${achievement.icon}</div>
+                    <div>
+                        <div class="font-bold text-text-primary">Achievement Unlocked!</div>
+                        <div class="text-sm text-primary-blue font-semibold">${achievement.title}</div>
+                        <div class="text-xs text-text-secondary">${achievement.description}</div>
+                    </div>
+                    <div class="achievement-rarity-badge text-white text-xs px-2 py-1 rounded" style="background-color: ${getRarityColor(achievement.rarity)}">${achievement.rarity.toUpperCase()}</div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Special effects for legendary achievements
+            if (achievement.rarity === 'legendary') {
+                createConfetti();
+            }
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 500);
+            }, 4000);
+        }, index * 1000);
+    });
+}
+
+function createConfetti() {
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti-piece';
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.background = ['#2563EB', '#059669', '#DC2626', '#7C3AED', '#EA580C'][Math.floor(Math.random() * 5)];
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                if (confetti.parentNode) {
+                    confetti.parentNode.removeChild(confetti);
+                }
+            }, 4000);
+        }, i * 50);
+    }
+}
+
+function getRarityColor(rarity) {
+    switch (rarity) {
+        case 'common': return '#6B7280';
+        case 'uncommon': return '#10B981';
+        case 'rare': return '#3B82F6';
+        case 'legendary': return '#F59E0B';
+        default: return '#6B7280';
+    }
+}
+
+function updateAchievementDisplay() {
+    const earnedAchievements = loadAchievements();
+    const achievementContainer = document.getElementById('achievement-container');
+    
+    if (achievementContainer) {
+        achievementContainer.innerHTML = achievements.map(achievement => {
+            const isEarned = earnedAchievements.includes(achievement.id);
+            const rarityColor = getRarityColor(achievement.rarity);
+            return `
+                <div class="achievement-badge ${isEarned ? 'earned' : 'locked'} relative group cursor-pointer">
+                    <div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-2xl transition-all duration-300 ${
+                        isEarned 
+                            ? '' 
+                            : 'border-gray-300 bg-gray-100 grayscale'
+                    }" ${isEarned ? `style="border-color: ${rarityColor}; background-color: ${rarityColor}20;"` : ''}>
+                        ${achievement.icon}
+                    </div>
+                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block">
+                        <div class="bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">
+                            <div class="font-semibold">${achievement.title}</div>
+                            <div>${achievement.description}</div>
+                            <div style="color: ${rarityColor}">${achievement.rarity.toUpperCase()}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+}
+
 // Load progress from localStorage
 function loadProgress() {
     const saved = localStorage.getItem('vibecodingProgress');
@@ -308,6 +515,9 @@ function updateProgress() {
     progressBar.style.width = `${percentage}%`;
     progressText.textContent = `${completedCount}/${totalCount} completed`;
     
+    // Check for new achievements
+    checkAchievements();
+    
     // Show celebration if all items are completed
     if (completedCount === totalCount) {
         celebration.classList.remove('hidden');
@@ -320,8 +530,16 @@ function updateProgress() {
 // Toggle checklist item
 function toggleChecklistItem(id) {
     const progress = loadProgress();
+    const wasCompleted = progress[id];
     progress[id] = !progress[id];
     saveProgress(progress);
+    
+    // Track session progress and perfect run
+    if (progress[id] && !wasCompleted) {
+        sessionProgress++;
+    } else if (!progress[id] && wasCompleted) {
+        perfectRun = false;
+    }
     
     const checkbox = document.getElementById(`checkbox-${id}`);
     const item = document.getElementById(`item-${id}`);
@@ -364,10 +582,15 @@ function toggleExpansion(id) {
 
 // Reset all progress
 function resetProgress() {
-    if (confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
+    if (confirm('Are you sure you want to reset all progress and achievements? This cannot be undone.')) {
         localStorage.removeItem('vibecodingProgress');
+        localStorage.removeItem('courseAchievements');
+        sessionProgress = 0;
+        perfectRun = true;
+        sessionStartTime = Date.now();
         renderChecklist();
         updateProgress();
+        updateAchievementDisplay();
     }
 }
 
@@ -531,6 +754,7 @@ function init() {
     updateProgress();
     addInteractiveEffects();
     initializeCarousels();
+    updateAchievementDisplay();
     
     // Add a welcome animation
     setTimeout(() => {
