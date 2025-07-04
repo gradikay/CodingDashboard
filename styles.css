@@ -600,16 +600,226 @@ a[class*="vibe-button"],
     background: #1D4ED8;
 }
 
-/* Responsive adjustments */
+/* Mobile-first responsive design */
+/* Base styles are mobile-first */
+
+/* Enhanced mobile layout */
 @media (max-width: 768px) {
-    .checklist-item {
-        margin-bottom: 1rem;
+    .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
     }
     
-    .carousel-btn {
-        width: 32px;
-        height: 32px;
+    /* Mobile header */
+    header h1 {
+        font-size: 1.875rem !important; /* 30px */
+        line-height: 1.2 !important;
+        margin-bottom: 0.75rem !important;
     }
+    
+    header p {
+        font-size: 1rem !important; /* 16px */
+        line-height: 1.4 !important;
+    }
+    
+    /* Mobile cards */
+    .checklist-item,
+    .magical-card,
+    .bg-card-bg {
+        margin-bottom: 1rem !important;
+        padding: 1rem !important;
+        border-radius: 1rem !important;
+    }
+    
+    /* Mobile carousel */
+    .carousel-btn {
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 14px !important;
+    }
+    
+    /* Mobile step navigation buttons */
+    .step-nav-btn {
+        padding: 0.75rem !important;
+        margin: 0.25rem !important;
+        font-size: 0.875rem !important;
+    }
+    
+    .step-indicator {
+        width: 2rem !important;
+        height: 2rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .step-title {
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+        margin-top: 0.25rem !important;
+    }
+    
+    /* Mobile buttons */
+    .vibe-button {
+        padding: 0.875rem 1.25rem !important;
+        font-size: 0.875rem !important;
+        width: 100% !important;
+        justify-content: center !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    /* Mobile theme toggle */
+    .theme-toggle {
+        top: 10px !important;
+        right: 10px !important;
+        padding: 6px 12px !important;
+        font-size: 0.75rem !important;
+        gap: 4px !important;
+    }
+    
+    /* Mobile progress section */
+    .magical-progress-bg {
+        height: 8px !important;
+    }
+    
+    /* Mobile achievement badges */
+    #achievement-container {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+    
+    .achievement-badge {
+        padding: 0.5rem !important;
+    }
+    
+    .achievement-badge .w-16 {
+        width: 3rem !important;
+        height: 3rem !important;
+        font-size: 1.25rem !important;
+    }
+    
+    /* Mobile platform links */
+    .affiliate-link {
+        margin-bottom: 1rem !important;
+    }
+    
+    .affiliate-link h3 {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .affiliate-link p {
+        font-size: 0.875rem !important;
+    }
+    
+    /* Mobile carousel adjustments */
+    .screenshot-image {
+        border-radius: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    /* Mobile notification */
+    .achievement-notification {
+        top: 60px !important;
+        right: 10px !important;
+        left: 10px !important;
+        max-width: none !important;
+        font-size: 0.875rem !important;
+    }
+    
+    /* Mobile grid layouts */
+    .grid.md\\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .grid.grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+    
+    /* Mobile floating elements are hidden by default */
+    .floating-magical-element {
+        display: none !important;
+    }
+}
+
+/* Tablet responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+    
+    /* Tablet achievement badges */
+    #achievement-container {
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 1rem !important;
+    }
+    
+    .achievement-badge .w-16 {
+        width: 3.5rem !important;
+        height: 3.5rem !important;
+    }
+    
+    /* Tablet platform links */
+    .grid.md\\:grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Tablet step navigation */
+    .step-nav-btn {
+        padding: 1rem !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Desktop enhancements */
+@media (min-width: 1025px) {
+    /* Show floating elements on desktop */
+    .floating-magical-element {
+        display: block !important;
+    }
+    
+    /* Desktop hover effects */
+    .checklist-item:hover {
+        transform: translateY(-4px) !important;
+    }
+    
+    .affiliate-link:hover {
+        transform: scale(1.02) !important;
+    }
+    
+    /* Desktop step navigation */
+    .step-nav-btn:hover {
+        transform: translateY(-2px) !important;
+    }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    .checklist-item:hover,
+    .affiliate-link:hover,
+    .step-nav-btn:hover {
+        transform: none !important;
+    }
+    
+    /* Larger touch targets */
+    .step-nav-btn,
+    .vibe-button,
+    .carousel-btn {
+        min-height: 44px !important;
+        min-width: 44px !important;
+    }
+    
+    /* Improved touch feedback */
+    .step-nav-btn:active,
+    .vibe-button:active,
+    .carousel-btn:active {
+        transform: scale(0.95) !important;
+        transition: transform 0.1s ease !important;
+    }
+}
 }
 
 /* Smooth scrolling */
