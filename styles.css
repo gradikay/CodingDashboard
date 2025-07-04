@@ -208,7 +208,7 @@ body {
     border-radius: 12px;
     border: 1px solid var(--border-light);
     position: relative;
-    padding: 8px; /* Add padding to prevent button overlap */
+    padding: 0; /* Remove container padding */
 }
 
 .carousel-track {
@@ -219,7 +219,21 @@ body {
 .carousel-slide {
     flex: 0 0 100%;
     min-width: 100%;
-    padding: 4px; /* Reduce padding around images */
+    padding: 0; /* Remove all padding around images */
+}
+
+.carousel-slide .bg-card-bg {
+    padding: 8px; /* Minimal padding only on the card */
+    margin: 0;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    max-height: none; /* Remove height restrictions */
+    object-fit: contain;
+    border-radius: 8px;
 }
 
 /* Mobile-optimized carousel buttons */
@@ -247,34 +261,7 @@ body {
     .carousel-btn {
         width: 32px;
         height: 32px;
-        top: 40%; /* Move buttons higher to avoid text overlap */
-    }
-    
-    .carousel-prev {
-        left: 4px;
-    }
-    
-    .carousel-next {
-        right: 4px;
-    }
-    
-    .carousel-container {
-        padding: 12px 40px 8px 40px; /* More side padding on mobile for buttons */
-    }
-    
-    .carousel-slide img {
-        max-height: 300px; /* Increase mobile image size */
-        width: 100%;
-        object-fit: contain;
-        margin: 0 auto;
-    }
-}
-
-/* Desktop carousel buttons */
-@media (min-width: 769px) {
-    .carousel-btn {
-        width: 44px;
-        height: 44px;
+        top: 20px; /* Position near top */
     }
     
     .carousel-prev {
@@ -285,11 +272,53 @@ body {
         right: 8px;
     }
     
+    .carousel-container {
+        padding: 0; /* Remove all container padding */
+        margin: 0;
+    }
+    
+    .carousel-slide {
+        padding: 0; /* Remove slide padding */
+    }
+    
+    .carousel-slide .bg-card-bg {
+        padding: 4px; /* Minimal card padding */
+        margin: 0;
+    }
+    
     .carousel-slide img {
-        max-height: 400px; /* Larger images on desktop */
         width: 100%;
+        height: auto;
+        min-height: 250px; /* Ensure decent size */
+        max-height: 70vh; /* Use more screen space */
         object-fit: contain;
-        margin: 0 auto;
+        margin: 0;
+    }
+}
+
+/* Desktop carousel buttons */
+@media (min-width: 769px) {
+    .carousel-btn {
+        width: 44px;
+        height: 44px;
+        top: 20px; /* Position near top */
+    }
+    
+    .carousel-prev {
+        left: 12px;
+    }
+    
+    .carousel-next {
+        right: 12px;
+    }
+    
+    .carousel-slide img {
+        width: 100%;
+        height: auto;
+        min-height: 350px;
+        max-height: 80vh; /* Use more screen space */
+        object-fit: contain;
+        margin: 0;
     }
 }
 
