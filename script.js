@@ -73,7 +73,7 @@ const checklistData = [
     {
         id: 1,
         title: "Create GitHub Account",
-        description: "Set up your GitHub account to store and manage your code repositories. GitHub is essential for version control and collaboration in software development.",
+        description: "Set up your GitHub account to store and manage your code repositories. GitHub is essential for version control and collaboration in software development. <strong>Already have a GitHub account?</strong> You can skip this step and move to the next one!",
         affiliateLink: "https://github.com",
         linkText: "Sign up for GitHub →",
         hasScreenshots: true,
@@ -103,7 +103,7 @@ const checklistData = [
     {
         id: 2,
         title: "Connect GitHub to Replit",
-        description: "Link your GitHub account to Replit for seamless code editing and deployment. This integration allows you to work on your projects from anywhere.",
+        description: "Link your GitHub account to Replit for seamless code editing and deployment. This integration allows you to work on your projects from anywhere. <strong>Already connected GitHub to Replit?</strong> Great! You can mark this as complete and continue to the next step.",
         affiliateLink: "https://replit.com/refer/kgradi",
         linkText: "Connect on Replit →",
         hasScreenshots: true,
@@ -233,7 +233,7 @@ const checklistData = [
     {
         id: 3,
         title: "Setup GitHub Pages deployment",
-        description: "Configure GitHub Pages to host your website for free. This will make your site live on the internet with automatic deployments.",
+        description: "Configure GitHub Pages to host your website for free. This will make your site live on the internet with automatic deployments. <strong>Website already deployed on GitHub Pages?</strong> Perfect! You can check this off and move to the custom domain setup.",
         affiliateLink: "https://docs.github.com/en/pages",
         linkText: "Learn about GitHub Pages →",
         hasScreenshots: true,
@@ -288,7 +288,7 @@ const checklistData = [
     {
         id: 4,
         title: "Connect domain to GitHub Pages",
-        description: "Link your custom domain to your GitHub Pages site so visitors can access your website using your domain name. This guide shows you how to set up DNS records in GoDaddy and configure GitHub Pages.",
+        description: "Link your custom domain to your GitHub Pages site so visitors can access your website using your domain name. This guide shows you how to set up DNS records in GoDaddy and configure GitHub Pages. <strong>Don't have a custom domain or prefer to use the free GitHub domain?</strong> You can skip this step - your site will work perfectly with the free yourname.github.io address!",
         affiliateLink: "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site",
         linkText: "Learn about custom domains →",
         hasScreenshots: true,
@@ -343,7 +343,7 @@ const checklistData = [
     {
         id: 5,
         title: "Celebrate! 🎉",
-        description: "Congratulations! You've successfully created and deployed your first website with a custom domain. Your site is now live on the internet for everyone to see!",
+        description: "Congratulations! You've successfully created and deployed your first website. Your site is now live on the internet for everyone to see! <strong>Ready to build more projects?</strong> You can mark this complete and start your next web development adventure!",
         affiliateLink: "https://developer.mozilla.org/en-US/docs/Learn",
         linkText: "Continue learning web development →"
     }

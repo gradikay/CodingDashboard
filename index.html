@@ -72,57 +72,47 @@
 
         <!-- Welcome Section -->
         <section class="mb-12">
-            <div class="bg-card-bg rounded-2xl p-8 border-2 border-border-mystical shadow-lg glow-card magical-card">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-text-primary magical-text">
-                    🌟 Welcome to Your Magical Web Development Journey
-                </h2>
-                <p class="text-center text-mystical mb-8 text-lg">
-                    Ready to conjure amazing websites? Let's gather the essential magical tools and platforms!
-                </p>
+            <div class="welcome-section">
+                <div class="text-center mb-8">
+                    <h2 class="welcome-title">
+                        🌟 Start Your Web Development Journey
+                    </h2>
+                    <p class="welcome-subtitle">
+                        Follow these steps to create and deploy your first website. Skip any steps you've already completed!
+                    </p>
+                </div>
                 
-                <!-- Platform Links -->
-                <div class="flex flex-col items-center space-y-4 md:flex-row md:justify-center md:space-y-0 md:space-x-6">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="platform-link group w-full max-w-sm">
-                        <div class="flex items-center p-4 rounded-xl bg-card-bg-light text-text-primary hover:bg-card-bg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-border-mystical hover:border-primary-gold">
-                            <div class="text-3xl mr-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-lg mb-1">GitHub</h3>
-                                <p class="text-sm text-text-secondary">Version control & hosting</p>
-                            </div>
+                <!-- Platform Overview Cards -->
+                <div class="platform-overview">
+                    <div class="platform-card">
+                        <div class="platform-icon github-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
                         </div>
-                    </a>
+                        <h3 class="platform-title">GitHub</h3>
+                        <p class="platform-description">Code hosting & version control</p>
+                    </div>
                     
-                    <a href="https://replit.com/refer/kgradi" target="_blank" rel="noopener noreferrer" class="platform-link group w-full max-w-sm">
-                        <div class="flex items-center p-4 rounded-xl bg-card-bg-light text-text-primary hover:bg-card-bg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-border-mystical hover:border-primary-gold">
-                            <div class="text-3xl mr-4 text-orange-500">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M7.5 7.5h9v9h-9v-9zm1.5 1.5v6h6v-6h-6zm-2.5-3.5h12v12h-12v-12zm1.5 1.5v9h9v-9h-9z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-lg mb-1">Replit</h3>
-                                <p class="text-sm text-text-secondary">Online IDE & deployment</p>
-                            </div>
+                    <div class="platform-card">
+                        <div class="platform-icon replit-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7.5 7.5h9v9h-9v-9zm1.5 1.5v6h6v-6h-6zm-2.5-3.5h12v12h-12v-12zm1.5 1.5v9h9v-9h-9z"/>
+                            </svg>
                         </div>
-                    </a>
+                        <h3 class="platform-title">Replit</h3>
+                        <p class="platform-description">Online development & deployment</p>
+                    </div>
                     
-                    <a href="https://godaddy.com" target="_blank" rel="noopener noreferrer" class="platform-link group w-full max-w-sm">
-                        <div class="flex items-center p-4 rounded-xl bg-card-bg-light text-text-primary hover:bg-card-bg transition-all duration-300 hover:scale-105 hover:shadow-lg border border-border-mystical hover:border-primary-gold">
-                            <div class="text-3xl mr-4 text-green-500">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2l9 7v11h-6v-7h-6v7h-6v-11l9-7z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-lg mb-1">GoDaddy</h3>
-                                <p class="text-sm text-text-secondary">Domain registration</p>
-                            </div>
+                    <div class="platform-card">
+                        <div class="platform-icon godaddy-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2l9 7v11h-6v-7h-6v7h-6v-11l9-7z"/>
+                            </svg>
                         </div>
-                    </a>
+                        <h3 class="platform-title">GoDaddy</h3>
+                        <p class="platform-description">Custom domain registration</p>
+                    </div>
                 </div>
             </div>
         </section>
