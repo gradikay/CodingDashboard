@@ -1553,8 +1553,20 @@ html {
         opacity: 1;
     }
     100% {
-        transform: translateY(-1000px) rotateZ(720deg);
+        transform: translateY(100vh) rotateZ(720deg);
         opacity: 0;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 60%, 100% {
+        transform: translate(-50%, -50%) translateY(0);
+    }
+    40% {
+        transform: translate(-50%, -50%) translateY(-30px);
+    }
+    80% {
+        transform: translate(-50%, -50%) translateY(-15px);
     }
 }
 

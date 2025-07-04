@@ -435,24 +435,63 @@ function showAchievementNotification(newAchievements) {
 }
 
 function createConfetti() {
-    for (let i = 0; i < 50; i++) {
+    console.log('🎉 Creating confetti!');
+    
+    // Create immediate confetti burst
+    for (let i = 0; i < 100; i++) {
         setTimeout(() => {
             const confetti = document.createElement('div');
             confetti.className = 'confetti-piece';
+            confetti.style.position = 'fixed';
             confetti.style.left = Math.random() * window.innerWidth + 'px';
-            confetti.style.background = ['#2563EB', '#059669', '#DC2626', '#7C3AED', '#EA580C'][Math.floor(Math.random() * 5)];
-            confetti.style.animationDelay = Math.random() * 2 + 's';
-            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            confetti.style.top = '0px';
+            confetti.style.width = '8px';
+            confetti.style.height = '8px';
+            confetti.style.zIndex = '9999';
+            confetti.style.pointerEvents = 'none';
+            
+            // Random colors
+            const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FECA57', '#FF9FF3', '#54A0FF'];
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.borderRadius = '50%';
+            
+            // Animation
+            confetti.style.animation = `confetti ${2 + Math.random() * 2}s linear forwards`;
+            confetti.style.animationDelay = Math.random() * 0.5 + 's';
             
             document.body.appendChild(confetti);
             
+            // Remove after animation
             setTimeout(() => {
                 if (confetti.parentNode) {
                     confetti.parentNode.removeChild(confetti);
                 }
-            }, 4000);
-        }, i * 50);
+            }, 5000);
+        }, i * 20);
     }
+    
+    // Add celebration text effect
+    const celebrationText = document.createElement('div');
+    celebrationText.innerHTML = '🎉 CONGRATULATIONS! 🎉';
+    celebrationText.style.position = 'fixed';
+    celebrationText.style.top = '50%';
+    celebrationText.style.left = '50%';
+    celebrationText.style.transform = 'translate(-50%, -50%)';
+    celebrationText.style.fontSize = '2rem';
+    celebrationText.style.fontWeight = 'bold';
+    celebrationText.style.color = '#FFD700';
+    celebrationText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.8)';
+    celebrationText.style.zIndex = '10000';
+    celebrationText.style.pointerEvents = 'none';
+    celebrationText.style.animation = 'bounce 1s ease-in-out';
+    
+    document.body.appendChild(celebrationText);
+    
+    setTimeout(() => {
+        if (celebrationText.parentNode) {
+            celebrationText.parentNode.removeChild(celebrationText);
+        }
+    }, 3000);
 }
 
 function getRarityColor(rarity) {
