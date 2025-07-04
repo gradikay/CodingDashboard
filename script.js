@@ -1039,11 +1039,13 @@ function initializeTouchCarousel(itemId) {
 
 // Security Configuration
 const COURSE_LICENSE_KEY = 'GUMROAD2025SECURE';
+const DEV_BYPASS_KEY = 'DEV_MODE_2025';
 
 // License validation system
 function validateLicense() {
     const storedKey = localStorage.getItem('courseLicenseKey');
-    return storedKey === COURSE_LICENSE_KEY;
+    const devMode = localStorage.getItem('devBypass');
+    return storedKey === COURSE_LICENSE_KEY || devMode === DEV_BYPASS_KEY;
 }
 
 function showLicenseModal() {
@@ -1065,6 +1067,7 @@ function showLicenseModal() {
         <div class="bg-white dark:bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4">
             <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">License Required</h2>
             <p class="text-gray-600 dark:text-gray-300 mb-6">Please enter your license key to access the course content.</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">Developer? Use: DEV_MODE_2025</p>
             <input type="text" id="licenseInput" placeholder="Enter license key" 
                    class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg mb-4 
                           bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -1097,30 +1100,36 @@ function checkLicense() {
     
     if (input.value.trim() === COURSE_LICENSE_KEY) {
         localStorage.setItem('courseLicenseKey', input.value.trim());
-        
-        // Remove the modal
-        const modal = document.getElementById('license-modal');
-        if (modal) {
-            modal.remove();
-        }
-        
-        // Restore scrolling
-        document.body.style.overflow = '';
-        document.documentElement.style.overflow = '';
-        
-        // Show main content
-        const mainContent = document.getElementById('main-content');
-        if (mainContent) {
-            mainContent.style.display = 'block';
-        }
-        
-        // Initialize the app
-        init();
+        activateApp();
+    } else if (input.value.trim() === DEV_BYPASS_KEY) {
+        localStorage.setItem('devBypass', input.value.trim());
+        activateApp();
     } else {
         error.classList.remove('hidden');
         input.value = '';
         input.focus();
     }
+}
+
+function activateApp() {
+    // Remove the modal
+    const modal = document.getElementById('license-modal');
+    if (modal) {
+        modal.remove();
+    }
+    
+    // Restore scrolling
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    
+    // Show main content
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+        mainContent.style.display = 'block';
+    }
+    
+    // Initialize the app
+    init();
 }
 
 // Anti-screenshot and anti-copy protection
@@ -1171,13 +1180,16 @@ function initializeSecurityMeasures() {
         console.log('%cThis is a browser feature intended for developers. Unauthorized access is prohibited.', 'color: red; font-size: 16px;');
     }, 1000);
 
-    // Detect developer tools
+    // Detect developer tools (only if not in dev mode)
     let devtools = {
         open: false,
         orientation: null
     };
 
     setInterval(function() {
+        const devMode = localStorage.getItem('devBypass');
+        if (devMode === DEV_BYPASS_KEY) return; // Skip detection in dev mode
+        
         if (window.outerHeight - window.innerHeight > 160 || window.outerWidth - window.innerWidth > 160) {
             if (!devtools.open) {
                 devtools.open = true;
