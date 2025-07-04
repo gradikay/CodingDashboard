@@ -281,6 +281,97 @@ body {
     color: #000000 !important;
 }
 
+/* Fix for step navigation buttons at bottom of carousel */
+.step-nav-btn.bg-gray-800\/50,
+.step-nav-btn.bg-blue-500\/20,
+.step-nav-btn[class*="bg-gray"],
+.step-nav-btn[class*="bg-blue"] {
+    background: var(--card-bg) !important;
+    border: 2px solid var(--border-mystical) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Active/current step button */
+.step-nav-btn.bg-blue-500\/20,
+.step-nav-btn[class*="bg-blue"] {
+    background: linear-gradient(135deg, var(--primary-gold), #FFA500) !important;
+    border-color: var(--primary-gold) !important;
+    color: #000000 !important;
+    box-shadow: var(--glow-gold);
+}
+
+/* Completed step button */
+.step-nav-btn .step-indicator.bg-green-500\/20,
+.step-nav-btn .step-indicator[class*="bg-green"] {
+    background: var(--primary-emerald) !important;
+    border-color: var(--primary-emerald) !important;
+}
+
+/* Step indicator circles */
+.step-indicator {
+    background: var(--card-bg) !important;
+    border: 2px solid var(--border-mystical) !important;
+    color: var(--text-primary) !important;
+}
+
+.step-indicator.border-blue-500 {
+    border-color: var(--primary-gold) !important;
+    background: linear-gradient(135deg, var(--primary-gold), #FFA500) !important;
+}
+
+.step-indicator.border-green-500 {
+    border-color: var(--primary-emerald) !important;
+    background: var(--primary-emerald) !important;
+}
+
+/* Step titles under buttons */
+.step-title {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+}
+
+/* Additional overrides for problematic Tailwind classes */
+.bg-gray-800\/50 {
+    background: var(--card-bg) !important;
+}
+
+.bg-blue-500\/20 {
+    background: linear-gradient(135deg, var(--primary-gold), #FFA500) !important;
+}
+
+.border-gray-600\/50 {
+    border-color: var(--border-mystical) !important;
+}
+
+.border-blue-500\/50 {
+    border-color: var(--primary-gold) !important;
+}
+
+.bg-green-500\/20 {
+    background: var(--primary-emerald) !important;
+}
+
+.border-green-500 {
+    border-color: var(--primary-emerald) !important;
+}
+
+.border-blue-500 {
+    border-color: var(--primary-gold) !important;
+}
+
+.border-gray-500 {
+    border-color: var(--border-mystical) !important;
+}
+
+/* Text color overrides for step elements */
+.text-text-secondary {
+    color: var(--text-primary) !important;
+}
+
+.text-primary-green {
+    color: var(--primary-emerald) !important;
+}
+
 .step-indicator {
     position: relative;
     transition: all 0.3s ease;
