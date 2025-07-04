@@ -519,6 +519,16 @@ html, body {
     color: white;
 }
 
+/* Light mode GitHub icon fix */
+[data-theme="light"] .github-icon {
+    background: linear-gradient(135deg, #F3F4F6, #E5E7EB);
+    color: #1F2937;
+}
+
+[data-theme="light"] .github-icon svg {
+    fill: #1F2937 !important;
+}
+
 .replit-icon {
     background: linear-gradient(135deg, #FF6B35, #F7931E);
     color: white;
