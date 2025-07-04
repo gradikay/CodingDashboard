@@ -330,36 +330,44 @@ body {
     font-weight: 600 !important;
 }
 
-/* Additional overrides for problematic Tailwind classes */
-.bg-gray-800\/50 {
+/* AGGRESSIVE overrides for problematic Tailwind classes - both themes */
+.bg-gray-800\/50,
+[class*="bg-gray-800"] {
     background: var(--card-bg) !important;
 }
 
-.bg-blue-500\/20 {
+.bg-blue-500\/20,
+[class*="bg-blue-500"] {
     background: linear-gradient(135deg, var(--primary-gold), #FFA500) !important;
 }
 
-.border-gray-600\/50 {
+.border-gray-600\/50,
+[class*="border-gray-600"] {
     border-color: var(--border-mystical) !important;
 }
 
-.border-blue-500\/50 {
+.border-blue-500\/50,
+[class*="border-blue-500"] {
     border-color: var(--primary-gold) !important;
 }
 
-.bg-green-500\/20 {
+.bg-green-500\/20,
+[class*="bg-green-500"] {
     background: var(--primary-emerald) !important;
 }
 
-.border-green-500 {
+.border-green-500,
+[class*="border-green-500"] {
     border-color: var(--primary-emerald) !important;
 }
 
-.border-blue-500 {
+.border-blue-500,
+[class*="border-blue"] {
     border-color: var(--primary-gold) !important;
 }
 
-.border-gray-500 {
+.border-gray-500,
+[class*="border-gray"] {
     border-color: var(--border-mystical) !important;
 }
 
@@ -370,6 +378,92 @@ body {
 
 .text-primary-green {
     color: var(--primary-emerald) !important;
+}
+
+/* NUCLEAR option - override ALL step navigation buttons */
+button[class*="step-nav"],
+.step-nav-btn,
+div[class*="step-nav"] button {
+    background: var(--card-bg) !important;
+    border: 2px solid var(--border-mystical) !important;
+    color: var(--text-primary) !important;
+}
+
+/* NUCLEAR option for light mode step buttons */
+[data-theme="light"] button[class*="step-nav"],
+[data-theme="light"] .step-nav-btn,
+[data-theme="light"] div[class*="step-nav"] button {
+    background: #FFFFFF !important;
+    border: 2px solid #D1D5DB !important;
+    color: #1F2937 !important;
+}
+
+/* Force current/active step button styling */
+button[class*="step-nav"][class*="bg-blue"],
+.step-nav-btn[class*="bg-blue"] {
+    background: linear-gradient(135deg, var(--primary-gold), #FFA500) !important;
+    color: #000000 !important;
+    border-color: var(--primary-gold) !important;
+}
+
+[data-theme="light"] button[class*="step-nav"][class*="bg-blue"],
+[data-theme="light"] .step-nav-btn[class*="bg-blue"] {
+    background: linear-gradient(135deg, #B8860B, #CD7F32) !important;
+    color: #FFFFFF !important;
+    border-color: #B8860B !important;
+}
+
+/* Target specific button grid at bottom of carousel */
+.grid button,
+div[class*="grid"] button,
+.step-nav-container button {
+    background: var(--card-bg) !important;
+    border: 2px solid var(--border-mystical) !important;
+    color: var(--text-primary) !important;
+    border-radius: 12px !important;
+    transition: all 0.4s ease !important;
+}
+
+[data-theme="light"] .grid button,
+[data-theme="light"] div[class*="grid"] button,
+[data-theme="light"] .step-nav-container button {
+    background: #FFFFFF !important;
+    border: 2px solid #D1D5DB !important;
+    color: #1F2937 !important;
+}
+
+/* Override any remaining problematic classes */
+.bg-gray-800 {
+    background: var(--card-bg) !important;
+}
+
+.bg-blue-500 {
+    background: linear-gradient(135deg, var(--primary-gold), #FFA500) !important;
+}
+
+[data-theme="light"] .bg-gray-800 {
+    background: #FFFFFF !important;
+}
+
+[data-theme="light"] .bg-blue-500 {
+    background: linear-gradient(135deg, #B8860B, #CD7F32) !important;
+}
+
+/* Last resort - target ALL buttons inside carousel areas */
+.carousel-container button,
+.carousel-wrapper button,
+[class*="carousel"] button {
+    background: var(--card-bg) !important;
+    border: 2px solid var(--border-mystical) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .carousel-container button,
+[data-theme="light"] .carousel-wrapper button,
+[data-theme="light"] [class*="carousel"] button {
+    background: #FFFFFF !important;
+    border: 2px solid #D1D5DB !important;
+    color: #1F2937 !important;
 }
 
 .step-indicator {
