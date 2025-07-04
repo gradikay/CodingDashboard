@@ -555,6 +555,11 @@ function updateProgress() {
     if (completedCount === totalCount) {
         celebration.classList.remove('hidden');
         celebration.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Trigger confetti when course is completed
+        setTimeout(() => {
+            createConfetti();
+        }, 500); // Small delay for better timing
     } else {
         celebration.classList.add('hidden');
     }
