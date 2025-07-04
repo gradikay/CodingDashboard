@@ -260,7 +260,7 @@ const checklistData = [
             },
             {
                 title: "Step 5: Find Pages Section",
-                description: "In the left sidebar, scroll down and click on 'Pages' to access GitHub Pages settings",
+                description: "In the left sidebar, scroll down and click on 'Pages' to access GitHub Pages settings. Make sure 'Deploy from a branch' is selected (it should be highlighted in red as shown).",
                 image: "attached_assets/github-9-pages_1751585153120.png"
             },
             {
