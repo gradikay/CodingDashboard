@@ -466,6 +466,72 @@ div[class*="grid"] button,
     color: #1F2937 !important;
 }
 
+/* Fix affiliate/action buttons specifically */
+.vibe-button,
+a[class*="vibe-button"],
+.affiliate-button,
+[href*="github.com"],
+[href*="replit.com"],
+[href*="godaddy.com"] {
+    background: linear-gradient(135deg, var(--primary-gold), #FFA500) !important;
+    color: #000000 !important;
+    border: 2px solid var(--primary-gold) !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 10px 20px !important;
+    border-radius: 12px !important;
+    transition: all 0.4s ease !important;
+}
+
+[data-theme="light"] .vibe-button,
+[data-theme="light"] a[class*="vibe-button"],
+[data-theme="light"] .affiliate-button,
+[data-theme="light"] [href*="github.com"],
+[data-theme="light"] [href*="replit.com"],
+[data-theme="light"] [href*="godaddy.com"] {
+    background: linear-gradient(135deg, #B8860B, #CD7F32) !important;
+    color: #FFFFFF !important;
+    border: 2px solid #B8860B !important;
+}
+
+/* Fix step indicator icons - ensure checkmarks are visible */
+.step-check {
+    color: #FFFFFF !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.step-check.hidden {
+    display: none !important;
+}
+
+.step-number.hidden {
+    display: none !important;
+}
+
+/* Ensure SVG icons are visible */
+.step-check svg,
+.step-indicator svg {
+    fill: currentColor !important;
+    color: #FFFFFF !important;
+}
+
+/* Green indicator backgrounds should show checkmarks properly */
+.step-indicator.bg-green-500\/20,
+.step-indicator.border-green-500 {
+    background: var(--primary-emerald) !important;
+    border-color: var(--primary-emerald) !important;
+}
+
+[data-theme="light"] .step-indicator.bg-green-500\/20,
+[data-theme="light"] .step-indicator.border-green-500 {
+    background: #228B22 !important;
+    border-color: #228B22 !important;
+}
+
 .step-indicator {
     position: relative;
     transition: all 0.3s ease;
