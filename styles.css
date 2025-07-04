@@ -286,12 +286,14 @@ body {
 /* Mobile carousel adjustments */
 @media (max-width: 768px) {
     .carousel-nav-btn {
-        padding: 6px 12px;
-        font-size: 13px;
+        padding: 8px 16px;
+        font-size: 14px;
+        min-height: 44px; /* Better touch target */
     }
     
     .carousel-nav-btn span {
-        display: none;
+        display: inline; /* Show text on mobile too */
+        font-weight: 600;
     }
     
     .carousel-title {
@@ -314,6 +316,7 @@ body {
     .carousel-controls .flex .carousel-nav-btn {
         width: 100%;
         justify-content: center;
+        gap: 8px; /* Space between icon and text */
     }
 }
 

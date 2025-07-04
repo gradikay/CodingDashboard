@@ -656,7 +656,7 @@ function renderChecklist() {
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                                             </svg>
-                                            <span class="hidden sm:inline">Previous</span>
+                                            <span>Previous Step</span>
                                         </button>
                                         
                                         <div class="text-center flex-1 mx-4">
@@ -665,7 +665,7 @@ function renderChecklist() {
                                         </div>
                                         
                                         <button class="carousel-nav-btn carousel-next flex items-center gap-2" onclick="nextSlide(${item.id})">
-                                            <span class="hidden sm:inline">Next</span>
+                                            <span>Next Step</span>
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                             </svg>
