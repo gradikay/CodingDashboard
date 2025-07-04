@@ -219,24 +219,65 @@ const checklistData = [
     },
     {
         id: 4,
-        title: "Buy a cheap domain from GoDaddy",
-        description: "Purchase an affordable domain name for your website. A custom domain makes your site look professional and helps with branding.",
-        affiliateLink: "https://godaddy.com",
-        linkText: "Buy domain on GoDaddy →"
+        title: "Connect domain to GitHub Pages",
+        description: "Link your custom domain to your GitHub Pages site so visitors can access your website using your domain name. This guide shows you how to set up DNS records in GoDaddy and configure GitHub Pages.",
+        affiliateLink: "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site",
+        linkText: "Learn about custom domains →",
+        hasScreenshots: true,
+        screenshots: [
+            {
+                title: "Step 1: Navigate to My Products",
+                description: "In your GoDaddy dashboard, click on your account menu and select 'My Products' to see all your domains",
+                image: "attached_assets/godaddy-1-account-my-products_1751591866558.png"
+            },
+            {
+                title: "Step 2: Select Your Domain",
+                description: "Choose the domain you want to connect to your GitHub Pages website from your list of domains",
+                image: "attached_assets/goddady-2-pick-domain-for-github_1751591866559.png"
+            },
+            {
+                title: "Step 3: Access Domain Settings",
+                description: "In your domain dashboard, click on 'Domain' from the left sidebar menu to access domain management options",
+                image: "attached_assets/godaddy-3-domain_1751591866559.png"
+            },
+            {
+                title: "Step 4: Go to DNS Settings",
+                description: "Click on the 'DNS' tab to access DNS record management where you'll configure your domain to point to GitHub Pages",
+                image: "attached_assets/godaddy-4-dns_1751591866559.png"
+            },
+            {
+                title: "Step 5: Add New DNS Records",
+                description: "On the DNS Records page, click the 'Add New Record' button to start adding the required DNS records for GitHub Pages",
+                image: "attached_assets/godaddy-5-add-new-record_1751591866559.png"
+            },
+            {
+                title: "Step 6: Create Four A Records",
+                description: "Create four A records with Name '@', TTL '1 Hour', and these GitHub IP addresses: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153",
+                image: "attached_assets/goddady-6-records_1751591866559.png"
+            },
+            {
+                title: "Step 7: Add CNAME Record for WWW",
+                description: "Create one CNAME record with Name 'www', Value as your GitHub domain (like 'yourusername.github.io'), and TTL '1 Hour'",
+                image: "attached_assets/goddady-7-cname-www_1751591866560.png"
+            },
+            {
+                title: "Step 8: Configure GitHub Custom Domain",
+                description: "Back in GitHub Pages settings, enter your domain name (without www) in the custom domain field and make sure 'Enforce HTTPS' is checked, then click Save",
+                image: "attached_assets/godaddy-8-github-custom-domain_1751591866560.png"
+            },
+            {
+                title: "Step 9: Verify DNS Configuration",
+                description: "If DNS is set up correctly, you'll see 'DNS check successful' in GitHub. This may take a few minutes to propagate - be patient!",
+                image: "attached_assets/goddady-9-github-dns-check_1751591866560.png"
+            }
+        ]
     },
     {
         id: 5,
-        title: "Connect domain to GitHub Pages",
-        description: "Set up GitHub Pages to host your website and connect your custom domain. This gives you free hosting with automatic deployments from your repository.",
-        affiliateLink: "https://docs.github.com/en/pages",
-        linkText: "Setup GitHub Pages →"
-    },
-    {
-        id: 6,
-        title: "Celebrate!",
-        description: "Congratulations! You've successfully deployed your first website with a custom domain. Share your achievement and start planning your next project!",
-        affiliateLink: "https://twitter.com/intent/tweet?text=I%20just%20deployed%20my%20first%20website!%20%F0%9F%9A%80",
-        linkText: "Share your success →"
+        title: "Celebrate! 🎉",
+        description: "Congratulations! You've successfully created and deployed your first website with a custom domain. Your site is now live on the internet for everyone to see!",
+        affiliateLink: "https://developer.mozilla.org/en-US/docs/Learn",
+        linkText: "Continue learning web development →"
     }
 ];
 

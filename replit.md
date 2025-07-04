@@ -33,14 +33,12 @@ This is a front-end web application for a coding course dashboard that guides us
 - **Responsive Grid**: Adapts to different screen sizes
 
 ### 3. Course Progression Flow
-The application guides users through 7 key steps:
+The application guides users through 5 key steps:
 1. GitHub account creation
 2. GitHub-Replit integration
-3. Static website development
-4. Code repository management
-5. Domain registration
-6. GitHub Pages deployment
-7. Celebration milestone
+3. GitHub Pages deployment
+4. Domain connection with DNS setup
+5. Celebration milestone
 
 ## Data Flow
 
