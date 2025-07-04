@@ -471,20 +471,13 @@ function updateAchievementDisplay() {
             const isEarned = earnedAchievements.includes(achievement.id);
             const rarityColor = getRarityColor(achievement.rarity);
             return `
-                <div class="achievement-badge ${isEarned ? 'earned' : 'locked'} relative group cursor-pointer">
+                <div class="achievement-badge ${isEarned ? 'earned' : 'locked'}">
                     <div class="w-16 h-16 rounded-full border-2 flex items-center justify-center text-2xl transition-all duration-300 ${
                         isEarned 
                             ? '' 
                             : 'border-gray-300 bg-gray-100 grayscale'
                     }" ${isEarned ? `style="border-color: ${rarityColor}; background-color: ${rarityColor}20;"` : ''}>
                         ${achievement.icon}
-                    </div>
-                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block">
-                        <div class="bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap">
-                            <div class="font-semibold">${achievement.title}</div>
-                            <div>${achievement.description}</div>
-                            <div style="color: ${rarityColor}">${achievement.rarity.toUpperCase()}</div>
-                        </div>
                     </div>
                 </div>
             `;
