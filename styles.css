@@ -1,10 +1,10 @@
 /* Harry Potter Magical Theme Styles */
 
 :root {
-    --primary-gold: #D4AF37;
+    --primary-gold: #FFD700;
     --primary-burgundy: #8B0000;
     --primary-emerald: #50C878;
-    --primary-sapphire: #0F52BA;
+    --primary-sapphire: #4169E1;
     --primary-bronze: #CD7F32;
     --accent-dark: #2D1B69;
     --accent-mystical: #4B0082;
@@ -12,14 +12,15 @@
     --bg-secondary: #1A1A2E;
     --card-bg: #16213E;
     --card-bg-light: #1E2A5E;
-    --text-primary: #F5F5DC;
-    --text-secondary: #D4AF37;
-    --text-mystical: #E6E6FA;
+    --text-primary: #FFFFFF;
+    --text-secondary: #FFD700;
+    --text-mystical: #F0F8FF;
+    --text-muted: #B0C4DE;
     --border-mystical: #483D8B;
     --accent-light: #2D1B69;
-    --shadow-mystical: 0 4px 20px rgba(212, 175, 55, 0.3);
-    --glow-gold: 0 0 20px rgba(212, 175, 55, 0.5);
-    --glow-emerald: 0 0 15px rgba(80, 200, 120, 0.4);
+    --shadow-mystical: 0 4px 20px rgba(255, 215, 0, 0.3);
+    --glow-gold: 0 0 20px rgba(255, 215, 0, 0.6);
+    --glow-emerald: 0 0 15px rgba(80, 200, 120, 0.5);
 }
 
 body {
@@ -131,22 +132,29 @@ body {
     opacity: 1;
 }
 
-/* Magical button styling */
+/* Magical button styling with HIGH CONTRAST */
 .vibe-button {
-    background: linear-gradient(135deg, var(--primary-gold), var(--primary-bronze));
-    border: 2px solid var(--border-mystical);
-    color: var(--bg-dark);
-    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-gold), #FFA500) !important;
+    border: 2px solid var(--primary-gold) !important;
+    color: #000000 !important;
+    font-weight: 900 !important;
     padding: 10px 20px;
     border-radius: 12px;
     transition: all 0.4s ease;
-    box-shadow: var(--shadow-mystical);
+    box-shadow: var(--glow-gold);
+    text-shadow: none !important;
 }
 
 .vibe-button:hover {
     transform: translateY(-2px);
     box-shadow: var(--glow-gold);
-    background: linear-gradient(135deg, var(--primary-bronze), var(--primary-gold));
+    background: linear-gradient(135deg, #FFA500, var(--primary-gold)) !important;
+    color: #000000 !important;
+}
+
+/* Button text override */
+.vibe-button * {
+    color: #000000 !important;
 }
     text-decoration: none;
     display: inline-flex;
@@ -210,30 +218,42 @@ body {
     transform: scale(1.1);
 }
 
-/* Magical step navigation styling */
+/* Magical step navigation styling with HIGH CONTRAST */
 .step-nav-btn {
-    background: var(--card-bg);
-    border: 2px solid var(--border-mystical);
+    background: var(--card-bg) !important;
+    border: 2px solid var(--border-mystical) !important;
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.4s ease;
-    color: var(--text-primary);
-    font-weight: 600;
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .step-nav-btn:hover {
-    background: var(--card-bg-light);
-    border-color: var(--primary-gold);
+    background: var(--card-bg-light) !important;
+    border-color: var(--primary-gold) !important;
     box-shadow: var(--glow-gold);
     transform: translateY(-2px);
+    color: #FFFFFF !important;
 }
 
 .step-nav-btn.active {
-    background: linear-gradient(135deg, var(--primary-gold), var(--primary-bronze));
-    border-color: var(--primary-gold);
-    color: var(--bg-dark);
+    background: linear-gradient(135deg, var(--primary-gold), #FFA500) !important;
+    border-color: var(--primary-gold) !important;
+    color: #000000 !important;
     box-shadow: var(--glow-gold);
-    font-weight: 700;
+    font-weight: 900 !important;
+    text-shadow: none;
+}
+
+/* Navigation tab text specific overrides */
+.step-nav-btn * {
+    color: inherit !important;
+}
+
+.step-nav-btn.active * {
+    color: #000000 !important;
 }
 
 .step-indicator {
@@ -529,13 +549,97 @@ html {
     50% { transform: translateY(-30px) rotate(360deg); }
 }
 
-/* Better text contrast */
-.text-primary {
+/* Better text contrast - Force high contrast */
+.text-primary, 
+h1, h2, h3, h4, h5, h6,
+.checklist-item h3,
+.step-title,
+p, span, div {
     color: var(--text-primary) !important;
 }
 
-.text-secondary {
+.text-secondary,
+.text-text-secondary {
     color: var(--text-secondary) !important;
+}
+
+.text-mystical,
+.text-text-mystical {
+    color: var(--text-mystical) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* High contrast overrides for all text elements */
+body, body * {
+    color: var(--text-primary);
+}
+
+/* Specific overrides for common Tailwind classes */
+.text-gray-400,
+.text-gray-500,
+.text-gray-600 {
+    color: var(--text-muted) !important;
+}
+
+.text-blue-600,
+.text-blue-500 {
+    color: var(--primary-sapphire) !important;
+}
+
+.text-green-600,
+.text-green-500 {
+    color: var(--primary-emerald) !important;
+}
+
+/* EXTREME contrast fixes for problematic elements */
+.checklist-item p,
+.checklist-item span,
+.checklist-item div,
+.checklist-item li {
+    color: #FFFFFF !important;
+}
+
+/* Step titles and descriptions */
+.step-title,
+.checklist-item h3 {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+}
+
+/* Progress text */
+#progress-text {
+    color: var(--primary-gold) !important;
+    font-weight: 700 !important;
+}
+
+/* Platform link text */
+.affiliate-link h3,
+.affiliate-link p {
+    color: #FFFFFF !important;
+}
+
+/* Force all paragraph and span elements to be white */
+p, span, div, li, a {
+    color: #FFFFFF !important;
+}
+
+/* Exception for buttons and special elements */
+.vibe-button, .vibe-button *, 
+.step-nav-btn.active, .step-nav-btn.active * {
+    color: #000000 !important;
+}
+
+/* Header text overrides */
+header h1, header p {
+    color: #FFFFFF !important;
+}
+
+/* Achievement badge text */
+.achievement-badge {
+    color: #FFFFFF !important;
 }
 
 /* Magical button variants */
