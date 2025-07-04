@@ -104,7 +104,7 @@ const checklistData = [
         id: 2,
         title: "Connect GitHub to Replit",
         description: "Link your GitHub account to Replit for seamless code editing and deployment. This integration allows you to work on your projects from anywhere.",
-        affiliateLink: "https://replit.com",
+        affiliateLink: "https://replit.com/refer/kgradi",
         linkText: "Connect on Replit →",
         hasScreenshots: true,
         screenshots: [
