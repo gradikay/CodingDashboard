@@ -1047,8 +1047,20 @@ function validateLicense() {
 }
 
 function showLicenseModal() {
+    // Hide all page content
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+        mainContent.style.display = 'none';
+    }
+    
+    // Disable scrolling
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    
     const modal = document.createElement('div');
-    modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+    modal.id = 'license-modal';
+    modal.className = 'fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50';
+    modal.style.pointerEvents = 'all';
     modal.innerHTML = `
         <div class="bg-white dark:bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4">
             <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">License Required</h2>
@@ -1071,6 +1083,12 @@ function showLicenseModal() {
     `;
     document.body.appendChild(modal);
     document.getElementById('licenseInput').focus();
+    
+    // Block all interaction with the background
+    modal.addEventListener('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    });
 }
 
 function checkLicense() {
@@ -1079,7 +1097,24 @@ function checkLicense() {
     
     if (input.value.trim() === COURSE_LICENSE_KEY) {
         localStorage.setItem('courseLicenseKey', input.value.trim());
-        document.querySelector('.fixed.inset-0').remove();
+        
+        // Remove the modal
+        const modal = document.getElementById('license-modal');
+        if (modal) {
+            modal.remove();
+        }
+        
+        // Restore scrolling
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        
+        // Show main content
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+            mainContent.style.display = 'block';
+        }
+        
+        // Initialize the app
         init();
     } else {
         error.classList.remove('hidden');
