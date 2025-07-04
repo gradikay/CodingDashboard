@@ -145,7 +145,7 @@ const checklistData = [
             },
             {
                 title: "Step 8: Enter Project Prompt",
-                description: "Type this exact prompt: 'Create a mobile-first landing page with animated touch effects, floating elements, and a glowing CTA button—all using pure HTML, CSS, and JS. No frameworks, no libraries, no python files. Just magic.' Then click 'Start chat'",
+                description: "⚠️ IMPORTANT: Type this exact prompt to ensure you get a static website (HTML/CSS/JS only): 'Create a mobile-first landing page with animated touch effects, floating elements, and a glowing CTA button—all using pure HTML, CSS, and JS. No frameworks, no libraries, no python files. Just magic.' The specificity is crucial - if you ask for something generic, Replit might create a Python/Node.js project instead of a static site! Then click 'Start chat'",
                 image: "attached_assets/replit-7-type-your-prompt_1751577736529.png"
             },
             {
