@@ -207,6 +207,8 @@ body {
     overflow: hidden;
     border-radius: 12px;
     border: 1px solid var(--border-light);
+    position: relative;
+    padding: 8px; /* Add padding to prevent button overlap */
 }
 
 .carousel-track {
@@ -217,14 +219,16 @@ body {
 .carousel-slide {
     flex: 0 0 100%;
     min-width: 100%;
+    padding: 4px; /* Reduce padding around images */
 }
 
+/* Mobile-optimized carousel buttons */
 .carousel-btn {
     background: var(--card-bg);
     border: 2px solid var(--border-mystical);
     border-radius: 50%;
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -233,6 +237,60 @@ body {
     z-index: 10;
     color: var(--text-primary);
     font-weight: bold;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Mobile positioning adjustments */
+@media (max-width: 768px) {
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+        top: 40%; /* Move buttons higher to avoid text overlap */
+    }
+    
+    .carousel-prev {
+        left: 4px;
+    }
+    
+    .carousel-next {
+        right: 4px;
+    }
+    
+    .carousel-container {
+        padding: 12px 40px 8px 40px; /* More side padding on mobile for buttons */
+    }
+    
+    .carousel-slide img {
+        max-height: 300px; /* Increase mobile image size */
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+}
+
+/* Desktop carousel buttons */
+@media (min-width: 769px) {
+    .carousel-btn {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .carousel-prev {
+        left: 8px;
+    }
+    
+    .carousel-next {
+        right: 8px;
+    }
+    
+    .carousel-slide img {
+        max-height: 400px; /* Larger images on desktop */
+        width: 100%;
+        object-fit: contain;
+        margin: 0 auto;
+    }
 }
 
 .carousel-btn:hover {
