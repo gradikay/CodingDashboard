@@ -325,7 +325,7 @@ const checklistData = [
             },
             {
                 title: "Step 7: Add CNAME Record for WWW",
-                description: "Create one CNAME record with Name 'www', Value as your GitHub domain (like 'yourusername.github.io'), and TTL '1 Hour'",
+                description: "Create a CNAME record with Name 'www' and Value as your domain name (like 'yourdomain.com'). If a www CNAME record already exists, you can delete it and create a new one, or update the existing one. Set TTL to '1 Hour'.",
                 image: "attached_assets/goddady-7-cname-www_1751591866560.png"
             },
             {
