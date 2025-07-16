@@ -1181,7 +1181,7 @@ function showLicenseModal() {
                         class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
                     Activate
                 </button>
-                <button onclick="window.location.href='https://gumroad.com'" 
+                <button onclick="window.location.href='https://9986552843531.gumroad.com/l/hpovje'" 
                         class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-lg transition-colors">
                     Purchase
                 </button>
@@ -1272,7 +1272,7 @@ function showLockoutModal() {
             <div class="text-3xl font-mono text-orange-500 mb-6" id="countdown-timer">${timeDisplay}</div>
             <p class="text-gray-500 dark:text-gray-400 text-sm">Time remaining until next attempt</p>
             <div class="mt-6">
-                <button onclick="window.location.href='https://gumroad.com'" 
+                <button onclick="window.location.href='https://9986552843531.gumroad.com/l/hpovje'" 
                         class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors">
                     Purchase License
                 </button>
